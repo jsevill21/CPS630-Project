@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSP Main Page</title>
+    <style>
+        * {box-sizing: border-box;}
+
+        header {text-align: center;}
+
+        nav {text-align: center;}
+
+        .col-2 {width: 16.66%;}
+        .col-10 {width: 83.33%;}
+        .col-12 {width: 100%;}
+
+        [class*="col-"] {
+            float: left;
+            padding: 10px;
+        }
+
+        .row {margin: 5px;}
+
+        .item {
+            border: 1px solid black;
+            width: 330px;
+            height: 400px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .item img {
+            width: 100%;
+            height: 75%;
+        }
+
+        .hide {display: none;}
+
+        li:hover {
+            color: blue;
+            cursor: pointer;
+        }
+
+        body {font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-12">
+            <header><h1>OSP Main</h1></header>
+            <nav>
+                <a>System Logo</a> |
+                <a href="About Us.html">About Us</a> |
+                <a>Sign Up</a> |
+                <a>Sign In</a> |
+                <a>Reviews</a> |
+                <a href="Shopping Cart.php">Shopping Cart</a> |
+                <a href="Services.html">Types of Services</a> |
+                <a>Search</a> |
+                <a href="DB Maintain.html">DB Maintain</a>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <h3>Price</h3>
+            <ul>
+                <li onclick="filter('all')">All</li>
+                <li onclick="filter('low')">$100 and Under</li>
+                <li onclick="filter('middle')">$100 to $300</li>
+                <li onclick="filter('high')">$300 and Over</li>
+            </ul>
+        </div>
+
+        <h2>Shop</h2>
+        <div id="container1" class="col-10" style="border: 1px solid black; display: flex; flex-wrap: wrap;" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="item tablets low" draggable="true" ondragstart="drag(event)" id="1">
+                <img src="tablet2.jpg" alt="tablet">
+                <p>iPad</p>
+                <p>$100</p>
+            </div>
+            <div class="item laptops middle" draggable="true" ondragstart="drag(event)" id="2">
+                <img src="laptop1.jpg" alt="laptop">
+                <p>Huawei Laptop MateBook</p>
+                <p>$900</p>
+            </div>
+            <div class="item laptops middle" draggable="true" ondragstart="drag(event)" id="3">
+                <img src="laptop2.jpg" alt="laptop">
+                <p>Microsoft Surface Laptop</p>
+                <p>$270</p>
+            </div>
+            <div class="item tablets middle" draggable="true" ondragstart="drag(event)" id="4">
+                <img src="tablet1.jpg" alt="tablet">
+                <p>Samsung Tablet</p>
+                <p>$110</p>
+            </div>
+            <div class="item phones high" draggable="true" ondragstart="drag(event)" id="5">
+                <img src="phone1.jpg" alt="phone">
+                <p>iPhone</p>
+                <p>$400</p>
+            </div>
+            <div class="item audio high" draggable="true" ondragstart="drag(event)" id="6">
+                <img src="sony headphones.jpg" alt="headphones">
+                <p>Sony WH-1000XM5 Headphones</p>
+                <p>$400</p>
+            </div>
+            <div class="item audio middle" draggable="true" ondragstart="drag(event)" id="7">
+                <img src="sonos speaker.jpg" alt="speaker">
+                <p>Sonos Era 100 Smart Speaker</p>
+                <p>$250</p>
+            </div>
+            <div class="item phones high" draggable="true" ondragstart="drag(event)" id="8">
+                <img src="google pixel.jpg" alt="phone">
+                <p>Google Pixel 8a</p>
+                <p>$600</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-10">
+            <h2>Shopping Cart</h2>
+            <form id="cartForm" action="process_cart.php" method="POST">
+                <input type="hidden" id="cartItems" name="cartItems">
+                <button type="submit">Submit Cart</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2"></div>
+        <div id="container2" class="col-10" style="display: flex; flex-wrap: wrap; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+
+    <script>
+        function filter(category) {
+            items = document.getElementsByClassName("item");
+            for (i = 0; i < items.length; i++) {
+                if (category == 'all') {
+                    removeClass(items[i], "hide");
+                }
+                else if (items[i].className.indexOf(category) == -1) {
+                    addClass(items[i], "hide");
+                }
+                else if (items[i].className.indexOf(category) > -1) {
+                    removeClass(items[i], "hide");
+                }
+            }
+        }
+
+        function addClass(item, newClass) {
+            if (item.className.indexOf(newClass) == -1) {
+                item.className += " " + newClass;
+            }
+        }
+
+        function removeClass(item, classRemove) {
+            classes = item.className.split(" ");
+            if (classes.indexOf(classRemove) > -1) {
+                item.className = classes[0] + " " + classes[1] + " " + classes[2];
+            } 
+        }
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+            updateCart();
+        }
+        
+        function updateCart() {
+            items = document.getElementById("container2").children;
+            cartItems = [];
+            for (i = 0; i < items.length; i++) {
+                cartItems.push(items[i].id);
+            }
+            document.getElementById("cartItems").value = cartItems.join(',');
+        }
+    </script>
+</body>
+</html>
