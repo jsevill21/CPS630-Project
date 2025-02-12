@@ -23,7 +23,7 @@ if ($conn->connect_error) {
 </head>
 
 <?php
-$sql = "SELECT * FROM Item WHERE id in (" . $_POST['cartItems'] . ")";
+$sql = "SELECT * FROM Item WHERE id in (" . $_POST['items'] . ")";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
