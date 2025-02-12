@@ -23,19 +23,15 @@ if ($conn->connect_error) {
 </head>
 
 <?php
-if (isset($_POST['cartItems'])) {
-    $sql = "SELECT * FROM Item WHERE id in (" . $_POST['cartItems'] . ")";
-    $result = $conn->query($sql);
+$sql = "SELECT * FROM Item WHERE id in (" . $_POST['cartItems'] . ")";
+$result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        echo "<table align='center'><tr><th>ID</th><th>Name</th><th>Price</th></tr>";
-        while($row = $result->fetch_assoc()) {
-            echo "<tr><td>".$row["id"]."</td><td>".$row["item_name"]."</td><td>".$row["price"]."</td></tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "No items in shopping cart";
+if ($result->num_rows > 0) {
+    echo "<table align='center'><tr><th>ID</th><th>Name</th><th>Price</th></tr>";
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>".$row["id"]."</td><td>".$row["item_name"]."</td><td>".$row["price"]."</td></tr>";
     }
+    echo "</table>";
 } else {
     echo "No items in shopping cart";
 }
