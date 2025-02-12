@@ -118,7 +118,7 @@
         <div class="col-10">
             <h2>Shopping Cart</h2>
             <form id="cart" action="Shopping Cart.php" method="POST">
-                <input type="hidden" id="cartItems" name="cartItems">
+                <input type="hidden" id="items" name="items">
                 <button type="submit">Submit Cart</button>
             </form>
         </div>
@@ -176,11 +176,11 @@
         
         function updateCart() {
             items = document.getElementById("container2").children;
-            cartItems = [];
+            itemID = [];
             for (i = 0; i < items.length; i++) {
-                cartItems.push(items[i].id);
+                itemID.push(items[i].id);
             }
-            document.getElementById("cartItems").value = cartItems.join(',');
+            document.getElementById("items").value = itemID.join(',');
         }
     </script>
 </body>
