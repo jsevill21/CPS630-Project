@@ -38,10 +38,22 @@
             color: blue;
             cursor: pointer;
         }
+        
+        #search {
+            float: right;
+            display: none;
+        }
     </style>
 </head>
 
 <body>
+    <div id="search">
+        <form id="order" action="Search.php" method="POST">
+            Search Order ID: 
+            <input type="text" id="order_id" name="order_id">
+            <button type="submit">Submit</button>
+        </form>
+    </div> 
     <div class="row">
         <div class="col-12">
             <header><h1>OSP Main</h1></header>
@@ -53,7 +65,7 @@
                 <a>Reviews</a> |
                 <a href="#cart">Shopping Cart</a> |
                 <a href="Services.html">Types of Services</a> |
-                <a href="Search.php">Search</a> |
+                <a href="#search" onclick="searchBar()">Search</a> |
                 <a href="DB Maintain.html">DB Maintain</a>
             </nav>
         </div>
@@ -181,6 +193,10 @@
                 itemID.push(items[i].id);
             }
             document.getElementById("items").value = itemID.join();
+        }
+        
+        function searchBar() {
+            document.getElementById("search").style.display = "block";
         }
     </script>
 </body>
