@@ -18,7 +18,7 @@ Summarizes what services are provided by the OSP.
 
 DB Maintain
 -----------
-This option found in the main page directs to DB Maintain.html and allows a database admin to do SQL actions. When they select a table and an action (insert, delete, update, select) they are directed to a new page that processes their input.
+This option found in the main page allows a database admin to do SQL actions. When they select an action (insert, delete, update, select) they are directed to a new page that processes their input.
 
 Search
 ------
