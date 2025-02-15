@@ -64,8 +64,17 @@
                 <a>Reviews</a> |
                 <a href="#cart">Shopping Cart</a> |
                 <a href="Services.html">Types of Services</a> |
-                <a href="#search" onclick="searchBar()">Search</a> |
-                <a href="DB Maintain.html">DB Maintain</a>
+                <a href="#search" onclick="document.getElementById('search').style.display='block';">Search</a> |
+                <button onclick="document.getElementById('sqlActions').style.display='inline';">DB Maintain</button>
+                <form id="sqlActions" class="hidden" method="POST" action="Process SQL Action.php">
+                    <select name="actions" id="actions" onchange="document.getElementById('sqlActions').submit();">
+                        <option value="insert">Select an Option</option>
+                        <option value="insert">Insert</option>
+                        <option value="delete">Delete</option>
+                        <option value="update">Update</option>
+                        <option value="select">Select</option>
+                    </select>
+                </form>
             </nav>
         </div>
     </div>
@@ -125,14 +134,16 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-10">
-            <h2>Shopping Cart</h2>
+        <h2 style="text-align: center;">Shopping Cart</h2>
+        <div id="container2" class="col-12" style="display: flex; flex-wrap: wrap; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+    <div class="row">
+        <div class="col-12">
             <form id="cart" action="Shopping Cart.php" method="POST">
                 <input type="hidden" id="items" name="items">
                 <input type="hidden" id="login" name="login">
-                <button type="button" onclick="appear('signUp'); changeLogin('signUp')">Sign Up</button>
-                <button type="button" onclick="appear('signIn'); changeLogin('signIn')">Sign In</button>
+                <button type="button" onclick="changeLogin('signUp')">Sign Up</button>
+                <button type="button" onclick="changeLogin('signIn')">Sign In</button>
                 <div id="signUp" style="display: none;">
                     <label for="email1">Email:</label>
                     <input type="text" id="email1" name="email1"><br>
@@ -151,13 +162,7 @@
             </form>
         </div>
     </div>
-    <div class="row">
-        <div class="col-2"></div>
-        <div id="container2" class="col-10" style="display: flex; flex-wrap: wrap; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    </div>
-    <div class="row">
-        <div class="col-12"><h1 id="logo" style="text-align: center; font-family: Impact; font-size: 50px;">Electric Shop</h1></div>
-    </div>
+    
     <script>
         function filter(category) {
             items = document.getElementsByClassName("item");
@@ -211,23 +216,21 @@
             document.getElementById("items").value = itemID.join();
         }
         
-        function appear(id) {
+        function changeLogin(id) {
             if (id == 'signUp') {
                 document.getElementById('signIn').style.display = "none";
             }  
             else if (id == 'signIn') {
                 document.getElementById('signUp').style.display = "none";
             }
-            document.getElementById(id).style.display = "block";
-        }
 
-        function changeLogin(login) {
-            if (login == 'signUp') {
+            if (id == 'signUp') {
                 document.getElementById("login").value = "signUp";
             }  
-            else if (login == 'signIn') {
+            else if (id == 'signIn') {
                 document.getElementById("login").value = "signIn";
             }
+            document.getElementById(id).style.display = "block";
         }
     </script>
 </body>
