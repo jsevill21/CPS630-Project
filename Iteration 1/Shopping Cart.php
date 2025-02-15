@@ -40,13 +40,13 @@ if ($login == 'signUp') {
     }
 }
 
-if (!empty($_POST['items'])) {
+echo "<table align='center'><tr><th>ID</th><th>Name</th><th>Price</th></tr>";
+if (!empty($_POST['items']) and $valid == True) {
     $query = "SELECT * FROM Item WHERE id in (" . $_POST['items'] . ")";
     $sql = new sql();
-    $sql->print_table($query, "<table align='center'><tr><th>ID</th><th>Name</th><th>Price</th></tr>", array('id', 'item_name', 'price'), $conn); 
-} elseif ($valid == True) {
-    echo "<br>No items in shopping cart";
+    $sql->print_html_rows($query, array('id', 'item_name', 'price'), $conn); 
 }
+echo "</table>";
 $conn->close();
 ?>
 </html>
