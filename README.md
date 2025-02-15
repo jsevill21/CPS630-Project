@@ -24,6 +24,10 @@ Search
 ------
 When clicked, this option found in the main page makes a dialogue box appear. A user can enter an order ID in the dialogue box to search for their order. They will be directed to a new page (Search.php) that uses SQL queries to show the results. 
 
+PHP Class
+---------
+PHP file included in some other files so that they can connect to the database and do SQL queries 
+
 Shopping Cart
 -------------
 A page for testing purposes only, it appears when you submit the shopping cart. Currently it validates login info and shows items in the shopping cart.
