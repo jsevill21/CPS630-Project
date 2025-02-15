@@ -31,7 +31,7 @@ $pwd2 = $_POST['pwd2']; // Used if a user signs in
 $mailAddress = $_POST['deliver'];
 $login = $_POST['login'];
 
-$valid = false; // Checks if a user successfully signed up or signed in
+$valid = False; // Checks if a user successfully signed up or signed in
 
 if ($login == 'signUp') {
     $sql = "INSERT INTO User (email, password, mail_address) VALUES ('" . $email1 . "','" . $pwd1 . "','" . $mailAddress . "');";
@@ -52,11 +52,11 @@ if ($login == 'signUp') {
     }
 }
 
-if ($valid == True and !empty($_POST['items'])) {
+if (!empty($_POST['items'])) {
     $query = "SELECT * FROM Item WHERE id in (" . $_POST['items'] . ")";
     $sql = new sql();
-    $sql->print_table($query, "<table align='center'><tr><th>ID</th><th>Name</th><th>Price</th></tr>", array('id', 'item_name', 'price'), $conn);
-} else {
+    $sql->print_table($query, "<table align='center'><tr><th>ID</th><th>Name</th><th>Price</th></tr>", array('id', 'item_name', 'price'), $conn); 
+} elseif ($valid == True) {
     echo "<br>No items in shopping cart";
 }
 $conn->close();
