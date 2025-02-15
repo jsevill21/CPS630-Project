@@ -52,17 +52,12 @@ if ($login == 'signUp') {
     }
 }
 
-$sql = "SELECT * FROM Item WHERE id in (" . $_POST['items'] . ")";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0 and $valid == True) {
-    echo "<table align='center'><tr><th>ID</th><th>Name</th><th>Price</th></tr>";
-    while($row = $result->fetch_assoc()) {
-        echo "<tr><td>".$row["id"]."</td><td>".$row["item_name"]."</td><td>".$row["price"]."</td></tr>";
-    }
-    echo "</table>";
-} else if ($valid == True) {
-    echo "No items in shopping cart";
+if ($valid == True and !empty($_POST['items'])) {
+    $query = "SELECT * FROM Item WHERE id in (" . $_POST['items'] . ")";
+    $sql = new sql();
+    $sql->print_table($query, "<table align='center'><tr><th>ID</th><th>Name</th><th>Price</th></tr>", array('id', 'item_name', 'price'), $conn);
+} else {
+    echo "<br>No items in shopping cart";
 }
 $conn->close();
 ?>
