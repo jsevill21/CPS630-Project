@@ -26,7 +26,7 @@ When clicked, this option found in the main page makes a dialogue box appear. A 
 
 PHP Class
 ---------
-PHP file included in some other files so that they can connect to the database and do SQL queries 
+A PHP file that connects to the database abd has a class that other files can use so that they can do SQL queries in the database.
 
 Shopping Cart
 -------------
