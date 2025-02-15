@@ -23,13 +23,15 @@ if ($conn->connect_error) {
 </head>
 
 <?php
+// Fomr data from Main Page.html
 $email1 = $_POST['email1'];
 $email2 = $_POST['email2'];
 $pwd1 = $_POST['pwd1'];
 $pwd2 = $_POST['pwd2'];
 $mailAddress = $_POST['deliver'];
 $login = $_POST['login'];
-$valid = false;
+
+$valid = false; // Checks if a user successfully signed up or signed in
 
 if ($login == 'signUp') {
     $sql = "INSERT INTO User (email, password, mail_address) VALUES ('" . $email1 . "','" . $pwd1 . "','" . $mailAddress . "');";
