@@ -9,7 +9,9 @@
         header {text-align: center;}
         nav {text-align: center;}
         body {font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
+        .hidden {display: none;}
         
+        .row {margin: 5px;}
         .col-2 {width: 16.66%;}
         .col-10 {width: 83.33%;}
         .col-12 {width: 100%;}
@@ -17,8 +19,7 @@
             float: left;
             padding: 10px;
         }
-        .row {margin: 5px;}
-
+        
         .item {
             border: 1px solid black;
             width: 330px;
@@ -31,8 +32,6 @@
             width: 100%;
             height: 75%;
         }
-
-        .hide {display: none;}
 
         li:hover {
             color: blue;
@@ -47,7 +46,7 @@
 </head>
 
 <body>
-    <div id="search">
+    <div id="search" class="hidden">
         <form id="order" action="Search.php" method="POST">
             Search Order ID: 
             <input type="text" id="order_id" name="order_id">
@@ -144,7 +143,7 @@
                 <input type="hidden" id="login" name="login">
                 <button type="button" onclick="changeLogin('signUp')">Sign Up</button>
                 <button type="button" onclick="changeLogin('signIn')">Sign In</button>
-                <div id="signUp" style="display: none;">
+                <div id="signUp" class="hidden">
                     <label for="email1">Email:</label>
                     <input type="text" id="email1" name="email1"><br>
                     <label for="deliver">Address:</label>
@@ -152,7 +151,7 @@
                     <label for="pwd1">Password:</label>
                     <input type="password" id="pwd1" name="pwd1"><br>
                 </div>
-                <div id="signIn" style="display: none;">
+                <div id="signIn" class="hidden">
                     <label for="email2">Email:</label>
                     <input type="text" id="email2" name="email2"><br>
                     <label for="pwd2">Password:</label>
