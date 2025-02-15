@@ -52,7 +52,7 @@ if ($login == 'signUp') {
     }
 }
 
-$sql = "SELECT * FROM Item WHERE id in ('" . $_POST['items'] . "')";
+$sql = "SELECT * FROM Item WHERE id in (" . $_POST['items'] . ")";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0 and $valid == True) {
