@@ -15,11 +15,13 @@
     <h1>Order Search</h1>
     <?php
     $order_id = $_POST['order_id'];
+    echo "<table align='center'><tr><th>User ID</th><th>Order ID</th></tr>";
+
     $query = "SELECT * FROM Order WHERE order_id=" . $order_id;
-
     $sql = new sql();
-    $sql->print_table($query, "<table align='center'><tr><th>User ID</th><th>Order ID</th></tr>", array('user_id', 'id'), $conn);
+    $sql->print_html_rows($query, array('user_id', 'id'), $conn);
 
+    echo "</table>";
     $conn->close();
     ?>
 </body>
