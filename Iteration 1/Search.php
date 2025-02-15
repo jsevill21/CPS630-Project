@@ -1,16 +1,4 @@
-<?php
-
-$servername = "127.0.0.1";
-$username = "root";
-$password = "";
-$dbname = "osp";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-?>
+<?php include ('PHP Class.php'); ?>
 
 <!DOCTYPE html>
 <html lang="eng">
@@ -27,18 +15,11 @@ if ($conn->connect_error) {
     <h1>Order Search</h1>
     <?php
     $order_id = $_POST['order_id'];
-    $sql = "SELECT * FROM Order WHERE order_id=" . $order_id;
-    $result = $conn->query($sql);
-    
-    if ($result->num_rows > 0) {
-        echo "<table align='center'><tr><th>User ID</th><th>Order ID</th></tr>";
-        while($row = $result->fetch_assoc()) {
-            echo "<tr><td>".$row["user_id"]. "</td><td>" . $row["order_id"]. "</td></tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "No orders found";
-    }
+    $query = "SELECT * FROM Order WHERE order_id=" . $order_id;
+
+    $sql = new sql();
+    $sql->print_table($query, "<table align='center'><tr><th>User ID</th><th>Order ID</th></tr>", array('user_id', 'id'), $conn);
+
     $conn->close();
     ?>
 </body>
