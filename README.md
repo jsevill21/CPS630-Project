@@ -23,3 +23,7 @@ This option found in the main page allows a database admin to do SQL actions. Wh
 Search
 ------
 When clicked, this option found in the main page makes a dialogue box appear. A user can enter an order ID in the dialogue box to search for their order. They will be directed to a new page (Search.php) that uses SQL queries to show the results. 
+
+Shopping Cart
+-------------
+Test page that appears when you submit the shopping cart. Currently it validates login info and shows items in the shopping cart
