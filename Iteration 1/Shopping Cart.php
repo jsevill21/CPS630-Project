@@ -23,11 +23,11 @@ if ($conn->connect_error) {
 </head>
 
 <?php
-// Fomr data from Main Page.html
-$email1 = $_POST['email1'];
-$email2 = $_POST['email2'];
-$pwd1 = $_POST['pwd1'];
-$pwd2 = $_POST['pwd2'];
+// Form data from Main Page.html
+$email1 = $_POST['email1']; // Used if a user signs up
+$email2 = $_POST['email2']; // Used if a user signs in
+$pwd1 = $_POST['pwd1']; // Used if a user signs up
+$pwd2 = $_POST['pwd2']; // Used if a user signs in
 $mailAddress = $_POST['deliver'];
 $login = $_POST['login'];
 
