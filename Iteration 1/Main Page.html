@@ -10,12 +10,11 @@
         nav {text-align: center;}
         body {font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
         .hidden {display: none;}
-        
         .row {margin: 5px;}
-        .col-2 {width: 16.66%;}
-        .col-10 {width: 83.33%;}
-        .col-12 {width: 100%;}
-        [class*="col-"] {
+        #search {float: right;}
+        
+        .col-12 {
+            width: 100%;
             float: left;
             padding: 10px;
         }
@@ -36,11 +35,6 @@
         li:hover {
             color: blue;
             cursor: pointer;
-        }
-        
-        #search {
-            float: right;
-            display: none;
         }
     </style>
 </head>
@@ -80,17 +74,8 @@
     </div>
     
     <div class="row">
-        <div class="col-2">
-            <h3>Price</h3>
-            <ul>
-                <li onclick="filter('all')">All</li>
-                <li onclick="filter('low')">$100 and Under</li>
-                <li onclick="filter('middle')">$100 to $300</li>
-                <li onclick="filter('high')">$300 and Over</li>
-            </ul>
-        </div>
         <h2>Shop</h2>
-        <div id="container1" class="col-10" style="border: 1px solid black; display: flex; flex-wrap: wrap;" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div id="container1" class="col-12" style="border: 1px solid black; display: flex; flex-wrap: wrap;" ondrop="drop(event)" ondragover="allowDrop(event)">
             <div class="item tablets low" draggable="true" ondragstart="drag(event)" id="1">
                 <img src="tablet2.jpg" alt="tablet">
                 <p>iPad</p>
@@ -166,34 +151,6 @@
     </div>
     
     <script>
-        function filter(category) {
-            items = document.getElementsByClassName("item");
-            for (i = 0; i < items.length; i++) {
-                if (category == 'all') {
-                    removeClass(items[i], "hide");
-                }
-                else if (items[i].className.indexOf(category) == -1) {
-                    addClass(items[i], "hide");
-                }
-                else if (items[i].className.indexOf(category) > -1) {
-                    removeClass(items[i], "hide");
-                }
-            }
-        }
-
-        function addClass(item, newClass) {
-            if (item.className.indexOf(newClass) == -1) {
-                item.className += " " + newClass;
-            }
-        }
-
-        function removeClass(item, classRemove) {
-            classes = item.className.split(" ");
-            if (classes.indexOf(classRemove) > -1) {
-                item.className = classes[0] + " " + classes[1] + " " + classes[2];
-            } 
-        }
-
         function allowDrop(ev) {
             ev.preventDefault();
         }
