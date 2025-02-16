@@ -20,7 +20,7 @@
     $query = "SELECT * FROM Orders WHERE order_id=" . $order_id;
     $sql = new sql();
     $sql->set_conn($conn);
-    $sql->print_html_rows($query, array('user_id', 'order_id');
+    $sql->print_html_rows($query, ['user_id', 'order_id']);
 
     echo "</table>";
     $conn->close();
