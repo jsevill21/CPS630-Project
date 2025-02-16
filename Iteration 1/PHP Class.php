@@ -15,8 +15,14 @@ if ($conn->connect_error) {
 <?php
 class sql {
     // For inserting, deleting, or updating rows
-    function IDU($query, $sucess_msg, $error_msg, $conn) {
-        if (mysqli_multi_query($conn, $query)) {
+    public $conn;
+    
+    function set_conn($conn) {
+        $this->conn = $conn;
+    }
+    
+    function IDU($query, $sucess_msg, $error_msg) {
+        if (mysqli_multi_query($this->conn, $query)) {
             echo $sucess_msg;
         } else {
             echo $error_msg;
@@ -25,7 +31,7 @@ class sql {
 
     // For selecting rows, this function uses print_r to print the rows
     function print_at_once($query, $conn) {
-        $result = $conn->query($query);
+        $result = $this->conn->query($query);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 print_r($row);
@@ -38,7 +44,7 @@ class sql {
 
     // For selecting rows, this function creates an HTML table
     function print_table($query, $column_format, $columns, $conn) {
-        $result = $conn->query($query);
+        $result = $this->conn->query($query);
         if ($result->num_rows > 0) {
             echo $column_format;
             while($row = $result->fetch_assoc()) {
