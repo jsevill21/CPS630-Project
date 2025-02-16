@@ -15,6 +15,10 @@
         <datalist id="tables">
             <option value="Item">
             <option value="User">
+            <option value="Orders">
+            <option value="Store">
+            <option value="Trip">
+            <option value="Truck">
         </datalist><br>
 
         <?php
