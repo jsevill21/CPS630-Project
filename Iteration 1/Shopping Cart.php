@@ -42,9 +42,10 @@ if ($login == 'signUp') {
 
 echo "<table align='center'><tr><th>ID</th><th>Name</th><th>Price</th></tr>";
 if (!empty($_POST['items']) and $valid == True) {
-    $query = "SELECT * FROM Item WHERE id in (" . $_POST['items'] . ")";
+    $query = "SELECT * FROM Item WHERE item_id in (" . $_POST['items'] . ")";
     $sql = new sql();
-    $sql->print_html_rows($query, array('id', 'item_name', 'price'), $conn); 
+    $sql->set_conn($conn);
+    $sql->print_html_rows($query, ['item_id', 'item_name', 'price']); 
 }
 echo "</table>";
 $conn->close();
