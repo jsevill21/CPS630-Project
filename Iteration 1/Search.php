@@ -19,7 +19,8 @@
 
     $query = "SELECT * FROM Orders WHERE order_id=" . $order_id;
     $sql = new sql();
-    $sql->print_html_rows($query, array('user_id', 'order_id'), $conn);
+    $sql->set_conn($conn);
+    $sql->print_html_rows($query, array('user_id', 'order_id');
 
     echo "</table>";
     $conn->close();
