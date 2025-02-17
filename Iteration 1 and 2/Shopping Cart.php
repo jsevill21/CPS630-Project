@@ -12,26 +12,24 @@
 
 <?php
 // Form data from Main Page.html
-$email1 = $_POST['email1']; // Used if a user signs up
-$email2 = $_POST['email2']; // Used if a user signs in
-$pwd1 = $_POST['pwd1']; // Used if a user signs up
-$pwd2 = $_POST['pwd2']; // Used if a user signs in
+$email1 = $_POST['email']; 
+$pwd2 = $_POST['pwd'];
 $mailAddress = $_POST['deliver'];
 $login = $_POST['login'];
 
 $valid = False; // Checks if a user successfully signed up or signed in
 
 if ($login == 'signUp') {
-    $sql = "INSERT INTO User (email, password, mail_address) VALUES ('" . $email1 . "','" . $pwd1 . "','" . $mailAddress . "');";
+    $query = "INSERT INTO User (email, password, mail_address) VALUES ('" . $email . "','" . $pwd . "','" . $mailAddress . "');";
     if (mysqli_multi_query($conn, $sql)) {
         echo "Successfully signed up";
         $valid = True;
     } else {
-        echo "Error" . $sql . "<br>" . $conn->error;
+        echo "Error" . $query . "<br>" . $conn->error;
     }
 } elseif ($login == 'signIn') {
-    $sql = "SELECT * FROM User WHERE email='" . $email2 . "' and password='" . $pwd2 . "'";
-    $result = $conn->query($sql);
+    $query = "SELECT * FROM User WHERE email='" . $email . "' and password='" . $pwd . "'";
+    $result = $conn->query($query);
     if ($result->num_rows > 0) {
         echo "Successfully signed in";
         $valid = True;
