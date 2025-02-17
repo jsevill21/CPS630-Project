@@ -16,7 +16,7 @@
     $login = $_POST['login'];
     $store = $_POST['store'];
     $items = $_POST['items'];
-    $valid = False;
+    $valid = False; // Checks if login credentials are valid
     $sql = new sql($conn);
 
     if ($login == 'signUp') {
