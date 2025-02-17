@@ -16,9 +16,9 @@ Services
 --------
 Summarizes what services are provided by the OSP. The link to it is found in the main page.
 
-DB Maintain, SQL Forms, Controller
+DB Maintain, SQL Forms, Admin
 -----------------------------------
-This option found in the main page allows a database admin to do SQL actions. When they select an action (insert, delete, update, select) they are directed to SQL Forms.php that shows different forms based on the selected action. When the appropiate form is completed, the admin is directed to Controller.php that shows or confirms the results.
+This option found in the main page allows a database admin to do SQL actions. When they select an action (insert, delete, update, select) they are directed to SQL Forms.php that shows different forms based on the selected action. When the appropiate form is completed, the admin is directed to Admin.php that shows or confirms the results.
 
 Search
 ------
