@@ -14,7 +14,7 @@
 // Form data from Main Page.html
 $email1 = $_POST['email']; 
 $pwd2 = $_POST['pwd'];
-$mail_address = $_POST['deliver'];
+$mail_address = $_POST['mail_address'];
 $branch = $_POST['branch'];
 $items = $_POST['items'];
 $login = $_POST['login'];
