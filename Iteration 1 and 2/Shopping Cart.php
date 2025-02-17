@@ -43,8 +43,7 @@ if ($login == 'signUp') {
 echo "<table align='center'><tr><th>ID</th><th>Name</th><th>Price</th></tr>";
 if (!empty($_POST['items']) and $valid == True) {
     $query = "SELECT * FROM Item WHERE item_id in (" . $_POST['items'] . ")";
-    $sql = new sql();
-    $sql->set_conn($conn);
+    $sql = new sql($conn);
     $sql->print_html_rows($query, ['item_id', 'item_name', 'price']); 
 }
 echo "</table>";
