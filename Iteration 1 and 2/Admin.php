@@ -3,7 +3,7 @@
 <?php
 $action = $_POST['action'];
 $table = $_POST['table'];
-$sql = new sql();
+$sql = new sql($conn);
 
 if ($action == 'select') {
     if (empty($_POST['condition'])) {
