@@ -183,15 +183,10 @@
         function changeLogin(id) {
             if (id == 'signUp') {
                 document.getElementById('signIn').style.display = "none";
-            }  
-            else if (id == 'signIn') {
-                document.getElementById('signUp').style.display = "none";
-            }
-
-            if (id == 'signUp') {
                 document.getElementById("login").value = "signUp";
             }  
             else if (id == 'signIn') {
+                document.getElementById('signUp').style.display = "none";
                 document.getElementById("login").value = "signIn";
             }
             document.getElementById(id).style.display = "block";
