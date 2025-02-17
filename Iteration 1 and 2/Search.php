@@ -18,8 +18,7 @@
     echo "<table align='center'><tr><th>User ID</th><th>Order ID</th></tr>";
 
     $query = "SELECT * FROM Orders WHERE order_id=" . $order_id;
-    $sql = new sql();
-    $sql->set_conn($conn);
+    $sql = new sql($conn);
     $sql->print_html_rows($query, ['user_id', 'order_id']);
 
     echo "</table>";
