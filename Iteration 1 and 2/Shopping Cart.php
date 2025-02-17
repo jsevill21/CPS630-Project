@@ -14,13 +14,15 @@
 // Form data from Main Page.html
 $email1 = $_POST['email']; 
 $pwd2 = $_POST['pwd'];
-$mailAddress = $_POST['deliver'];
+$mail_address = $_POST['deliver'];
+$branch = $_POST['branch'];
+$items = $_POST['items'];
 $login = $_POST['login'];
 
 $valid = False; // Checks if a user successfully signed up or signed in
 
 if ($login == 'signUp') {
-    $query = "INSERT INTO User (email, password, mail_address) VALUES ('" . $email . "','" . $pwd . "','" . $mailAddress . "');";
+    $query = "INSERT INTO User (email, password, mail_address) VALUES ('" . $email . "','" . $pwd . "','" . $mail_address . "');";
     if (mysqli_multi_query($conn, $sql)) {
         echo "Successfully signed up";
         $valid = True;
@@ -40,7 +42,7 @@ if ($login == 'signUp') {
 
 echo "<table align='center'><tr><th>ID</th><th>Name</th><th>Price</th></tr>";
 if (!empty($_POST['items']) and $valid == True) {
-    $query = "SELECT * FROM Item WHERE item_id in (" . $_POST['items'] . ")";
+    $query = "SELECT * FROM Item WHERE item_id in (" . $items . ")";
     $sql = new sql($conn);
     $sql->print_html_rows($query, ['item_id', 'item_name', 'price']); 
 }
