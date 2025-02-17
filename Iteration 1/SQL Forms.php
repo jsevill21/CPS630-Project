@@ -9,7 +9,7 @@
 <body>
     <h1>Enter Parameters</h1>
     <p>When inserting values or specifying WHERE conditionals, enclode string values with single quotes</p>
-    <form method="POST" action="Controller.php">
+    <form method="POST" action="Admin.php">
         Select Table: 
         <input list="tables" id="table" name="table">
         <datalist id="tables">
