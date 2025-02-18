@@ -20,7 +20,8 @@ class sql {
     public function __construct($conn) {
         $this->conn = $conn;
     }
-    
+
+    // When you want to find a specific value
     public function find_value($query, $column) {
         $result = $this->conn->query($query);
         $value = 0;
