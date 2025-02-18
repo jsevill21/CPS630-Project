@@ -31,7 +31,8 @@ class sql {
         }
         return $value;
     }
-    
+
+    // For inserting, deleting, or updating tables. Also provides a success or error message when the transaction is done
     public function IDU($query, $sucess_msg, $error_msg) {
         if (mysqli_multi_query($this->conn, $query)) {
             echo $sucess_msg;
