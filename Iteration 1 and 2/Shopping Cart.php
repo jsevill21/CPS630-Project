@@ -61,6 +61,7 @@
         echo "<input type='hidden' id='store' name='store' value=" . $store . ">";
         echo "<button type='submit'>Confirm Order</button>";
         echo "</form>";
+        echo "<div id='map' style='width:50vw; height:50vh; left:25vw'></div>";
     }
     ?>
     <script>
