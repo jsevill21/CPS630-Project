@@ -21,6 +21,16 @@ class sql {
         $this->conn = $conn;
     }
     
+    public function find_value($query, $column) {
+        $result = $this->conn->query($query);
+        $value = 0;
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $value = $row[$column];
+        }
+        return $value;
+    }
+    
     public function IDU($query, $sucess_msg, $error_msg) {
         if (mysqli_multi_query($this->conn, $query)) {
             echo $sucess_msg;
