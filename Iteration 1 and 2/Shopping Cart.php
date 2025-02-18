@@ -62,7 +62,25 @@
         echo "<button type='submit'>Confirm Order</button>";
         echo "</form>";
     }
-    $conn->close();
     ?>
+    <script>
+        function initMap() {
+            source = {
+                lat: <?php echo $sql->find_value("SELECT latitude FROM Store WHERE store_id=" . $store, 'latitude');?>, 
+                lng: <?php echo $sql->find_value("SELECT longitude FROM Store WHERE store_id=" . $store, 'longitude');$conn->close();?>
+            };
+            map = new google.maps.Map(document.getElementById("map"), {zoom: 14, center: source});
+            marker = new google.maps.Marker({position: source, map: map});
+
+            navigator.geolocation.getCurrentPosition(showDestination);
+            function showDestination(position){
+                destination = {lat: position.coords.latitude, lng: position.coords.longitude};
+                marker = new google.maps.Marker({position: destination, map: map});
+                path = new google.maps.Polyline({path: [source, destination]});
+                path.setMap(map);
+            }
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUkLHIQlaZOxsAaWYeUNivaFyXEcbJ5uY&callback=initMap"></script>
 </body>
 </html>
