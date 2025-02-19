@@ -5,12 +5,10 @@
 <head>
     <title>Shopping Cart</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; text-align: center;}
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body style="text-align: center;">
     <?php
     $delivery_address = $_POST['delivery_address'];
     $login = $_POST['login'];
