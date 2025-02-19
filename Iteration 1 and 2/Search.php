@@ -15,7 +15,7 @@
     <h1>Order Search</h1>
     <?php
     $order_id = $_POST['order_id'];
-    echo "<table align='center'><tr><th>User ID</th><th>Order ID</th></tr>";
+    echo "<table align='center'><tr><th>Email</th><th>Order ID</th></tr>";
 
     $query = "SELECT * FROM Orders WHERE order_id=" . $order_id;
     $sql = new sql($conn);
