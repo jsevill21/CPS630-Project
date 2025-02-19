@@ -42,7 +42,7 @@ class sql {
     }
 
     // For selecting rows, this function uses print_r to print the rows
-    public function print_at_once($query, $conn) {
+    public function print_at_once($query) {
         $result = $this->conn->query($query);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
@@ -55,10 +55,9 @@ class sql {
     }
 
     // For selecting rows, this function creates an HTML table
-    public function print_table($query, $column_format, $columns, $conn) {
+    public function print_table($query, $columns) {
         $result = $this->conn->query($query);
         if ($result->num_rows > 0) {
-            echo $column_format;
             while($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 for ($i = 0; $i < count($columns); $i++) {
@@ -66,7 +65,6 @@ class sql {
                 }
                 echo "</tr>";
             }
-            echo "</table>";
         } else {
             echo "0 results";
         }
