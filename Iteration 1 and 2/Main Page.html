@@ -75,42 +75,42 @@ his is the code <!DOCTYPE html>
         <h2>Shop</h2>
         <div id="container1" class="col-12" style="border: 1px solid black; display: flex; flex-wrap: wrap;" ondrop="drop(event)" ondragover="allowDrop(event)">
             <div class="item tablets low" draggable="true" ondragstart="drag(event)" id="1">
-                <img src="images/tablet2.jpg" alt="tablet">
+                <img src="images/tablet2.jpg" draggable="false" alt="tablet">
                 <p>iPad</p>
                 <p>$100</p>
             </div>
             <div class="item laptops middle" draggable="true" ondragstart="drag(event)" id="2">
-                <img src="images/laptop1.jpg" alt="laptop">
+                <img src="images/laptop1.jpg" draggable="false" alt="laptop">
                 <p>Huawei Laptop MateBook</p>
                 <p>$900</p>
             </div>
             <div class="item laptops middle" draggable="true" ondragstart="drag(event)" id="3">
-                <img src="images/laptop2.jpg" alt="laptop">
+                <img src="images/laptop2.jpg" draggable="false" alt="laptop">
                 <p>Microsoft Surface Laptop</p>
                 <p>$270</p>
             </div>
             <div class="item tablets middle" draggable="true" ondragstart="drag(event)" id="4">
-                <img src="images/tablet1.jpg" alt="tablet">
+                <img src="images/tablet1.jpg" draggable="false" alt="tablet">
                 <p>Samsung Tablet</p>
                 <p>$110</p>
             </div>
             <div class="item phones high" draggable="true" ondragstart="drag(event)" id="5">
-                <img src="images/phone1.jpg" alt="phone">
+                <img src="images/phone1.jpg" draggable="false" alt="phone">
                 <p>iPhone</p>
                 <p>$400</p>
             </div>
             <div class="item audio high" draggable="true" ondragstart="drag(event)" id="6">
-                <img src="images/sony headphones.jpg" alt="headphones">
+                <img src="images/sony headphones.jpg" draggable="false" alt="headphones">
                 <p>Sony WH-1000XM5 Headphones</p>
                 <p>$400</p>
             </div>
             <div class="item audio middle" draggable="true" ondragstart="drag(event)" id="7">
-                <img src="images/sonos speaker.jpg" alt="speaker">
+                <img src="images/sonos speaker.jpg" draggable="false" alt="speaker">
                 <p>Sonos Era 100 Smart Speaker</p>
                 <p>$250</p>
             </div>
             <div class="item phones high" draggable="true" ondragstart="drag(event)" id="8">
-                <img src="images/google pixel.jpg" alt="phone">
+                <img src="images/google pixel.jpg" draggable="false" alt="phone">
                 <p>Google Pixel 8a</p>
                 <p>$600</p>
             </div>
@@ -162,8 +162,10 @@ his is the code <!DOCTYPE html>
 
         function drop(ev) {
             ev.preventDefault();
-            var data = ev.dataTransfer.getData("text");
-            ev.target.appendChild(document.getElementById(data));
+            data = ev.dataTransfer.getData("text");
+            if (ev.target.id == "container1" || ev.target.id == "container2") {
+                ev.target.appendChild(document.getElementById(data));
+            }
             updateCart();
         }
         
