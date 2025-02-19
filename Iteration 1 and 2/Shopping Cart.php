@@ -50,7 +50,7 @@
     echo "<table align='center'><tr><th>ID</th><th>Name</th><th>Price</th></tr>";
     if (!empty($_POST['items']) and $valid == True) {
         $query = "SELECT * FROM Item WHERE item_id in (" . $items . ")";
-        $sql->print_html_rows($query, ['item_id', 'item_name', 'price']); 
+        $sql->print_table($query, ['item_id', 'item_name', 'price']); 
         echo "</table>";
 
         echo "Store: " . $sql->find_value("SELECT store_name FROM Store WHERE store_id=" . $store, 'store_name');
