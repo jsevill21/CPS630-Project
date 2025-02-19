@@ -1,3 +1,4 @@
+<?php include ('connect.php'); ?>
 <?php include ('PHP Class.php'); ?>
 
 <!DOCTYPE html>
