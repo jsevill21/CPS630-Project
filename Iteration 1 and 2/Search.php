@@ -19,7 +19,7 @@
 
     $query = "SELECT * FROM Orders WHERE order_id=" . $order_id;
     $sql = new sql($conn);
-    $sql->print_html_rows($query, ['email', 'order_id']);
+    $sql->print_table($query, ['email', 'order_id']);
 
     echo "</table>";
     $conn->close();
