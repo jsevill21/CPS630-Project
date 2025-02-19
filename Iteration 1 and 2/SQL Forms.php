@@ -4,11 +4,12 @@
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL Forms</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <h1>Enter Parameters</h1>
-    <p>When inserting values or specifying WHERE conditionals, enclode string values with single quotes</p>
+    <p>When inserting values or specifying WHERE conditionals, enclose string values with single quotes</p>
     <form method="POST" action="Admin.php">
         Select Table: 
         <input list="tables" id="table" name="table">
