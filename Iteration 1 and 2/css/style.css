@@ -1,0 +1,109 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* 🌍 Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* 📌 Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 0;
+}
+
+/* 🔝 Navigation Bar */
+nav {
+    background: #333;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: #ff6b6b;
+    border-radius: 5px;
+}
+
+/* 🏠 Header */
+header {
+    text-align: center;
+    padding: 30px 0;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+/* 📋 Services List */
+ul {
+    list-style: none;
+    text-align: center;
+    padding: 20px 0;
+}
+
+ul li {
+    background: white;
+    display: inline-block;
+    padding: 15px 25px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+ul li:hover {
+    background: #ff6b6b;
+    color: white;
+}
+
+/* 🦶 Footer */
+footer {
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        padding: 10px;
+    }
+
+    nav a {
+        display: block;
+        padding: 8px;
+    }
+
+    ul li {
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+    }
+}
