@@ -66,19 +66,21 @@
     ?>
     <script>
         function initMap() {
-            source = {
+            origin = {
                 lat: <?php echo $sql->find_value("SELECT latitude FROM Store WHERE store_id=" . $store, 'latitude');?>, 
-                lng: <?php echo $sql->find_value("SELECT longitude FROM Store WHERE store_id=" . $store, 'longitude');$conn->close();?>
+                lng: <?php echo $sql->find_value("SELECT longitude FROM Store WHERE store_id=" . $store, 'longitude'); $conn->close();?>
             };
-            map = new google.maps.Map(document.getElementById("map"), {zoom: 14, center: source});
-            marker = new google.maps.Marker({position: source, map: map});
+            map = new google.maps.Map(document.getElementById("map"), {zoom: 14, center: origin});
 
             navigator.geolocation.getCurrentPosition(showDestination);
             function showDestination(position){
                 destination = {lat: position.coords.latitude, lng: position.coords.longitude};
-                marker = new google.maps.Marker({position: destination, map: map});
-                path = new google.maps.Polyline({path: [source, destination]});
-                path.setMap(map);
+
+                ds = new google.maps.DirectionsService();
+                dr = new google.maps.DirectionsRenderer();
+
+                ds.route({origin: origin, destination: destination, travelMode: google.maps.TravelMode.DRIVING}, (path) => {dr.setDirections(path);});
+                dr.setMap(map);
             }
         }
     </script>
