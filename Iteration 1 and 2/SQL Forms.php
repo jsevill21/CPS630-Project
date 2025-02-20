@@ -11,16 +11,15 @@
     <h1>Enter Parameters</h1>
     <p>When inserting values or specifying WHERE conditionals, enclose string values with single quotes</p>
     <form method="POST" action="Admin.php">
-        Select Table: 
-        <input list="tables" id="table" name="table">
-        <datalist id="tables">
-            <option value="Item">
-            <option value="User">
-            <option value="Orders">
-            <option value="Store">
-            <option value="Trip">
-            <option value="Truck">
-        </datalist><br>
+        <label for="tables">Select Table: </label>
+        <select name="tables "id="tables">
+            <option value="Item">Item</option>
+            <option value="User">User</option>
+            <option value="Orders">Orders</option>
+            <option value="Store">Store</option>
+            <option value="Trip">Trip</option>
+            <option value="Truck">Truck</option>
+        </select><br>
 
         <?php
         $action = $_POST['actions'];
@@ -52,5 +51,36 @@
         ?>
         <button type="submit">Submit</button>
     </form>
+    <h2>Table Attributes</h2>
+    <table style="border: 2px solid black;">
+        <tr>
+            <th>Table</th>
+            <th>Attributes</th>
+        </tr>
+        <tr>
+            <td>Item</td>
+            <td>item_id, item_name, price</td>
+        </tr>
+        <tr>
+            <td>User</td>
+            <td>email, password, delivery_address</td>
+        </tr>
+        <tr>
+            <td>Orders</td>
+            <td>order_id, email, trip_id</td>
+        </tr>
+        <tr>
+            <td>Store</td>
+            <td>store_id, store_name, latitude, longitude</td>
+        </tr>
+        <tr>
+            <td>Trip</td>
+            <td>trip_id, truck_id, destination</td>
+        </tr>
+        <tr>
+            <td>Truck</td>
+            <td>truck_id, store_id</td>
+        </tr>
+    </table>
 </body>
 </html>
