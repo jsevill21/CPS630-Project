@@ -46,6 +46,8 @@
             echo "Incorrect login credentials";
         }
         $delivery_address = $sql->find_value("SELECT delivery_address FROM User WHERE email='" . $email . "'", 'delivery_address');
+    } else {
+        echo "Please sign in or sign up";
     }
 
     if (!empty($_POST['items']) and $valid == True) {
@@ -63,8 +65,6 @@
         echo "<button type='submit'>Confirm Order</button>";
         echo "</form>";
         echo "<div id='map' style='width:50vw; height:50vh; left:25vw'></div>";
-    } else {
-        echo "Please sign in or sign up";
     }
     ?>
     <script>
