@@ -23,6 +23,8 @@
         $pwd = $_POST['signUp_pwd'];
         if ($conn->query("SELECT * FROM User WHERE email='" . $email . "'")->num_rows > 0) {
             echo "You have already signed up";
+        } elseif (empty($email) or empty($pwd) or empty($delivery_address)) {
+            echo "Please enter email, password, and address";
         } else {
             $query = "INSERT INTO User (email, password, delivery_address) VALUES ('" . $email . "','" . $pwd . "','" . $delivery_address . "');";
             if (mysqli_multi_query($conn, $query)) {
@@ -46,8 +48,8 @@
         $delivery_address = $sql->find_value("SELECT delivery_address FROM User WHERE email='" . $email . "'", 'delivery_address');
     }
 
-    echo "<table style='margin: auto'><tr><th>ID</th><th>Name</th><th>Price</th></tr>";
     if (!empty($_POST['items']) and $valid == True) {
+        echo "<table style='margin: auto'><tr><th>ID</th><th>Name</th><th>Price</th></tr>";
         $query = "SELECT * FROM Item WHERE item_id in (" . $items . ")";
         $sql->print_table($query, ['item_name', 'price']); 
         echo "</table>";
