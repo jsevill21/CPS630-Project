@@ -5,6 +5,10 @@
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL Forms</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        table {border: 2px solid black; border-collapse: collapse}
+        th, td {border: 2px solid black; padding: 4px}
+    </style>
 </head>
 
 <body>
@@ -52,7 +56,7 @@
         <button type="submit">Submit</button>
     </form>
     <h2>Table Attributes</h2>
-    <table style="border: 2px solid black;">
+    <table>
         <tr><th>Table</th><th>Attributes</th></tr>
         <tr><td>Item</td><td>item_id, item_name, price</td></tr>
         <tr><td>User</td><td>email, password, delivery_address</td></tr>
