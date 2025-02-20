@@ -9,7 +9,6 @@
         * {box-sizing: border-box;}
         header {text-align: center;}
         nav {text-align: center;}
-        .row {margin: 5px;}
         .hidden {display: none;}
         #search {float: right;}
         
@@ -42,7 +41,7 @@
             <button type="submit">Submit</button>
         </form>
     </div>    
-    <div class="row">
+    <div class="row" style="width: 100%">
         <div class="col-12">
             <header><h1>OSP Main</h1></header>
             <nav>
@@ -122,17 +121,17 @@
                 <button type="button" onclick="changeLogin('signUp')">Sign Up</button>
                 <button type="button" onclick="changeLogin('signIn')">Sign In</button>
                 <div id="signUp" class="hidden">
-                    <label for="signUp_email">Email:</label>
+                    <label for="signUp_email">Email:</label><br>
                     <input type="text" id="signUp_email" name="signUp_email"><br>
-                    <label for="delivery_address">Address:</label>
+                    <label for="delivery_address">Address:</label><br>
                     <input type="text" id="delivery_address" name="delivery_address"><br>
-                    <label for="signUp_pwd">Password:</label>
+                    <label for="signUp_pwd">Password:</label><br>
                     <input type="password" id="signUp_pwd" name="signUp_pwd"><br>
                 </div>
                 <div id="signIn" class="hidden">
-                    <label for="signIn_email">Email:</label>
+                    <label for="signIn_email">Email:</label><br>
                     <input type="text" id="signIn_email" name="signIn_email"><br>
-                    <label for="signIn_pwd">Password:</label>
+                    <label for="signIn_pwd">Password:</label><br>
                     <input type="password" id="signIn_pwd" name="signIn_pwd"><br>
                 </div><br>
                 <label for="store">Select Store:</label>
