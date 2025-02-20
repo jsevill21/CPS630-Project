@@ -63,6 +63,8 @@
         echo "<button type='submit'>Confirm Order</button>";
         echo "</form>";
         echo "<div id='map' style='width:50vw; height:50vh; left:25vw'></div>";
+    } else {
+        echo "Please sign in or sign up";
     }
     ?>
     <script>
