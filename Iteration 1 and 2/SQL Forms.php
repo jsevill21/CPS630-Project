@@ -9,7 +9,7 @@
 
 <body>
     <h1>Enter Parameters</h1>
-    <p>When inserting values or specifying WHERE conditionals, enclose string values with single quotes</p>
+    <p>When inserting values or specifying WHERE conditionals, enclose string values with single quotes</p><br>
     <form method="POST" action="Admin.php">
         <label for="table">Select Table: </label>
         <select id="table" name="table">
@@ -25,27 +25,27 @@
         $action = $_POST['actions'];
         if ($action == 'insert') {
             echo "<input type='hidden' id='action' name='action' value='insert'>";
-            echo "<label for='columns'>Columns (separate by commas): </label>";
+            echo "<label for='columns'>Columns (separate by commas): </label><br>";
             echo "<input type='text' id='columns' name='columns'><br>";
-            echo "<label for='values'>Values (separate by commas): </label>";
+            echo "<label for='values'>Values (separate by commas): </label><br>";
             echo "<input type='text' id='values' name='values'><br>";
         } elseif ($action == 'delete') {
             echo "<input type='hidden' id='action' name='action' value='delete'>";
-            echo "<label for='condition'>Condition: </label>";
+            echo "<label for='condition'>Condition: </label><br>";
             echo "<input type='text' id='condition' name='condition'><br>";
         } elseif ($action == 'update') {
             echo "<input type='hidden' id='action' name='action' value='update'>";
-            echo "<label for='column'>Column: </label>";
+            echo "<label for='column'>Column: </label><br>";
             echo "<input type='text' id='column' name='column'><br>";
-            echo "<label for='newValue'>New Value: </label>";
+            echo "<label for='newValue'>New Value: </label><br>";
             echo "<input type='text' id='newValue' name='newValue'><br>";
-            echo "<label for='condition'>Condition: </label>";
+            echo "<label for='condition'>Condition: </label><br>";
             echo "<input type='text' id='condition' name='condition'><br>";
         } elseif ($action == 'select') {
             echo "<input type='hidden' id='action' name='action' value='select'>";
-            echo "<label for='columns'>Columns (separate by commas): </label>";
+            echo "<label for='columns'>Columns (separate by commas): </label><br>";
             echo "<input type='text' id='columns' name='columns'><br>";
-            echo "<label for='condition'>Condition: </label>";
+            echo "<label for='condition'>Condition: </label><br>";
             echo "<input type='text' id='condition' name='condition'><br>";
         }
         ?>
