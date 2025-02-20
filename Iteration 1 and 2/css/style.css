@@ -84,6 +84,16 @@ ul li:hover {
     color: white;
 }
 
+table {
+    border: 2px solid black; 
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 2px solid black; 
+    padding: 4px;
+}
+
 footer {
     text-align: center;
     background: #333;
