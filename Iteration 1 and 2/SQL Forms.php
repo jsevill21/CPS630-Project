@@ -15,8 +15,8 @@
     <h1>Enter Parameters</h1>
     <p>When inserting values or specifying WHERE conditionals, enclose string values with single quotes</p>
     <form method="POST" action="Admin.php">
-        <label for="tables">Select Table: </label>
-        <select name="tables "id="tables">
+        <label for="table">Select Table: </label>
+        <select id="table" name="table">
             <option value="Item">Item</option>
             <option value="User">User</option>
             <option value="Orders">Orders</option>
