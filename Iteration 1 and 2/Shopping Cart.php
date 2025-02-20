@@ -46,7 +46,7 @@
         $delivery_address = $sql->find_value("SELECT delivery_address FROM User WHERE email='" . $email . "'", 'delivery_address');
     }
 
-    echo "<table align='center'><tr><th>ID</th><th>Name</th><th>Price</th></tr>";
+    echo "<table style='margin: auto'><tr><th>ID</th><th>Name</th><th>Price</th></tr>";
     if (!empty($_POST['items']) and $valid == True) {
         $query = "SELECT * FROM Item WHERE item_id in (" . $items . ")";
         $sql->print_table($query, ['item_id', 'item_name', 'price']); 
