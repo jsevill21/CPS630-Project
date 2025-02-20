@@ -14,12 +14,18 @@
     <h1>Order Search</h1>
     <?php
     $order_id = $_POST['order_id'];
-    echo "<table style='margin: auto auto';><tr><th>Email</th><th>Order ID</th></tr>";
-
     $query = "SELECT * FROM Orders WHERE order_id=" . $order_id;
     $sql = new sql($conn);
-    $sql->print_table($query, ['email', 'order_id']);
+    ?>
 
+    <p><b>Email:</b> <?php echo $sql->find_value($query, "email");?></p>
+    <p><b>Order ID:</b> <?php echo $sql->find_value($query, "order_id");?></p>
+    <p><b>Order Details:</b></p>
+
+    <?php
+    echo "<table style='margin: auto'><tr><th>Item</th><th>Price</th></tr>";
+    $query = "SELECT item_name, price FROM Item WHERE item_id IN (SELECT item_id FROM Cart WHERE order_id= " . $order_id . ")";
+    $sql->print_table($query, ['item_name', 'price']);
     echo "</table>";
     $conn->close();
     ?>
