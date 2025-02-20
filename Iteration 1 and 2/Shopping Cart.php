@@ -21,10 +21,10 @@
     if ($login == 'signUp') {
         $email = $_POST['signUp_email'];
         $pwd = $_POST['signUp_pwd'];
-        if ($conn->query("SELECT * FROM User WHERE email='" . $email . "'")->num_rows > 0) {
+        if (empty($email) or empty($pwd) or empty($delivery_address)) {
+            echo "Please enter valid email, password, and address";
+        } elseif ($conn->query("SELECT * FROM User WHERE email='" . $email . "'")->num_rows > 0) {
             echo "You have already signed up";
-        } elseif (empty($email) or empty($pwd) or empty($delivery_address)) {
-            echo "Please enter email, password, and address";
         } else {
             $query = "INSERT INTO User (email, password, delivery_address) VALUES ('" . $email . "','" . $pwd . "','" . $delivery_address . "');";
             if (mysqli_multi_query($conn, $query)) {
