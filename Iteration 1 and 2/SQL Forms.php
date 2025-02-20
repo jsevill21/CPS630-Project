@@ -5,10 +5,6 @@
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL Forms</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        table {border: 2px solid black; border-collapse: collapse}
-        th, td {border: 2px solid black; padding: 4px}
-    </style>
 </head>
 
 <body>
