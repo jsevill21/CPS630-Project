@@ -49,7 +49,7 @@
     }
 
     if (!empty($_POST['items']) and $valid == True) {
-        echo "<table style='margin: auto'><tr><th>ID</th><th>Name</th><th>Price</th></tr>";
+        echo "<table style='margin: auto'><tr><th>Name</th><th>Price</th></tr>";
         $query = "SELECT * FROM Item WHERE item_id in (" . $items . ")";
         $sql->print_table($query, ['item_name', 'price']); 
         echo "</table>";
