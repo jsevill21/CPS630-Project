@@ -30,4 +30,4 @@ A PHP file that connects to the database abd has a class that other files can us
 
 Shopping Cart
 -------------
-A page for testing purposes only, it appears when you submit the shopping cart. Currently it validates login info and shows items in the shopping cart.
+Currently it validates login info and shows items in the shopping cart after a user submits their order.
