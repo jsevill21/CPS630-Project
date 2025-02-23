@@ -9,7 +9,7 @@
 
 <body>
     <h1>Enter Parameters</h1>
-    <p>When inserting values or specifying WHERE conditionals, enclose string values with single quotes</p><br>
+    <p>When inserting values or specifying WHERE conditionals, enclose string values with single quotes. No need to write WHERE at the beginning of the condition box (if applicable)</p><br>
     <form method="POST" action="Admin.php">
         <label for="table">Select Table: </label>
         <select id="table" name="table">
