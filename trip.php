@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 <?php
 $sql = "CREATE TABLE Trip (
-trip_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY
+trip_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 truck_id INT(6) UNSIGNED NOT NULL,
 destination VARCHAR(50) NOT NULL,
 FOREIGN KEY (truck_id) REFERENCES Truck(truck_id)
