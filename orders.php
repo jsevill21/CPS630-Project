@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 <?php
 $sql = "CREATE TABLE Orders (
-order_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY
+order_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 email VARCHAR(50) NOT NULL,
 trip_id INT(6) UNSIGNED NOT NULL,
 FOREIGN KEY (email) REFERENCES User(email),
