@@ -34,4 +34,4 @@ Validates login info and shows items in the shopping cart after a user submits t
 
 Database
 --------
-The name of the database is called osp.
+The name of the database is osp.
