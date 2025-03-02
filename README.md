@@ -28,6 +28,6 @@ PHP Class
 ---------
 A PHP file that connects to the database abd has a class that other files can use so that they can do SQL queries in the database.
 
-Shopping Cart
+Inovice
 -------------
-Currently it validates login info and shows items in the shopping cart after a user submits their order.
+Validates login info and shows items in the shopping cart after a user submits their order.
