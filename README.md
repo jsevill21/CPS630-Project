@@ -1,3 +1,7 @@
+Database
+--------
+The name of the database is called osp.
+
 Main Page
 ---------
 The online service platform (OSP) lets customers order items and have these items delivered to them. The main page is where they can see the items.
