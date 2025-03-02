@@ -1,7 +1,3 @@
-Database
---------
-The name of the database is called osp.
-
 Main Page
 ---------
 The online service platform (OSP) lets customers order items and have these items delivered to them. The main page is where they can see the items.
@@ -35,3 +31,7 @@ A PHP file that connects to the database abd has a class that other files can us
 Invoice
 -------------
 Validates login info and shows items in the shopping cart after a user submits their order.
+
+Database
+--------
+The name of the database is called osp.
