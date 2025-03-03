@@ -15,6 +15,7 @@
     $login = $_POST['login'];
     $store = $_POST['store'];
     $items = $_POST['items'];
+    $payment = $_POST['payment'];
     $valid = False; // Checks if login credentials are valid
     $sql = new sql($conn);
 
@@ -57,11 +58,13 @@
         echo "</table>";
 
         echo "Store: " . $sql->find_value("SELECT store_name FROM Store WHERE store_id=" . $store, 'store_name');
+        echo $payment;
         echo "<form action='Confirm.php' method='POST'>";
-        echo "<input type='hidden' id='items' name='items' value=" . $items. ">";
+        echo "<input type='hidden' id='items' name='items' value=" . $items . ">";
         echo "<input type='hidden' id='email' name='email' value=" . $email . ">";
         echo "<input type='hidden' id='delivery_address' name='delivery_address' value='" . $delivery_address . "'>";
         echo "<input type='hidden' id='store' name='store' value=" . $store . ">";
+        echo "<input type='hidden' id='payment' name='payment' value=" . $payment . ">";
         echo "<button type='submit'>Confirm Order</button>";
         echo "</form>";
         echo "<div id='map' style='width:50vw; height:50vh; left:25vw'></div>";
