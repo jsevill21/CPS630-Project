@@ -17,6 +17,7 @@ $sql = "CREATE TABLE Orders (
 order_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 email VARCHAR(50) NOT NULL,
 trip_id INT(6) UNSIGNED NOT NULL,
+payment_option VARCHAR(30),
 FOREIGN KEY (email) REFERENCES User(email),
 FOREIGN KEY (trip_id) REFERENCES Trip(trip_id)
 );";
