@@ -57,8 +57,8 @@
         $sql->print_table($query, ['item_name', 'price']); 
         echo "</table>";
 
-        echo "Store: " . $sql->find_value("SELECT store_name FROM Store WHERE store_id=" . $store, 'store_name');
-        echo $payment;
+        echo "Store: " . $sql->find_value("SELECT store_name FROM Store WHERE store_id=" . $store, 'store_name') . "<br>";
+        echo "Payment Option: " . $payment;
         echo "<form action='Confirm.php' method='POST'>";
         echo "<input type='hidden' id='items' name='items' value=" . $items . ">";
         echo "<input type='hidden' id='email' name='email' value=" . $email . ">";
