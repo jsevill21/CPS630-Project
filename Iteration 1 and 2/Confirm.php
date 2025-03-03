@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body style="text-align: center;">
+    <h1>Order Confrimation</h1>
     <?php
     $sql = new sql($conn);
     $items = explode(',', $_POST['items']);
