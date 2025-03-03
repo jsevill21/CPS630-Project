@@ -10,6 +10,7 @@
 </head>
 
 <body style="text-align: center;">
+    <h1>Order Details</h1>
     <?php
     $delivery_address = $_POST['delivery_address'];
     $login = $_POST['login'];
