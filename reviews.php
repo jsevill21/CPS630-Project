@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 $sql = "CREATE TABLE Reviews (
 review_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 item_id INT(6) UNSIGNED NOT NULL,
-rn INT(6),
+rn INT(6) NOT NULL,
 review VARCHAR(80),
 FOREIGN KEY (item_id) REFERENCES Item(item_id)
 );";
