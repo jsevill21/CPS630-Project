@@ -19,7 +19,6 @@ email VARCHAR(50) NOT NULL,
 payment_option VARCHAR(50) NOT NULL,
 card_name VARCHAR(50),
 card_number INT(6),
-paypal_pwd VARCHAR(50),
 FOREIGN KEY (email) REFERENCES User(email)
 );";
 
