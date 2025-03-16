@@ -15,10 +15,10 @@ if ($conn->connect_error) {
 <?php
 $sql = "CREATE TABLE Reviews (
 review_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-item_id INT(6) UNSIGNED,
+item_id INT(6) UNSIGNED NOT NULL,
 rn INT(6),
-review VARCHAR(50),
-FOREIGN KEY item_id REFERENCES Item(item_id)
+review VARCHAR(80),
+FOREIGN KEY (item_id) REFERENCES Item(item_id)
 );";
 
 if (mysqli_query($conn, $sql)) {
