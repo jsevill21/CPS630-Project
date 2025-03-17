@@ -58,7 +58,9 @@
         <tr><th>Table</th><th>Attributes</th></tr>
         <tr><td>Item</td><td>item_id, item_name, price</td></tr>
         <tr><td>User</td><td>email, password, delivery_address</td></tr>
-        <tr><td>Orders</td><td>order_id, email, trip_id</td></tr>
+        <tr><td>Payment</td><td>payment_id, email, payment_option, card_name, card_number</td></tr>
+        <tr><td>Orders</td><td>order_id, payment_id, trip_id</td></tr>
+        <tr><td>Reviews</td><td>review_id, item_id, rn, review</td></tr>
         <tr><td>Store</td><td>store_id, store_name, latitude, longitude</td></tr>
         <tr><td>Trip</td><td>trip_id, truck_id, destination</td></tr>
         <tr><td>Truck</td><td>truck_id, store_id</td></tr>
