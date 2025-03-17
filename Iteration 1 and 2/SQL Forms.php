@@ -15,7 +15,9 @@
         <select id="table" name="table">
             <option value="Item">Item</option>
             <option value="User">User</option>
+            <option value="Payment">Payment</option>
             <option value="Orders">Orders</option>
+            <option value="Reviews">Reviews</option>
             <option value="Store">Store</option>
             <option value="Trip">Trip</option>
             <option value="Truck">Truck</option>
