@@ -15,6 +15,7 @@ if ($conn->connect_error) {
 <?php
 $sql = "CREATE TABLE User (
 email VARCHAR(50) PRIMARY KEY,
+salt VARCHAR(80) NOT NULL,
 password VARCHAR(50) NOT NULL,
 delivery_address VARCHAR(50) NOT NULL
 );";
