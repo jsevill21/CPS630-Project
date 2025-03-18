@@ -16,7 +16,9 @@
     $login = $_POST['login'];
     $store = $_POST['store'];
     $items = $_POST['items'];
-    $payment = $_POST['payment'];
+    $payment_option = $_POST['payment'];
+    $card_number = $_POST['card_number']; 
+    $card_name = $_POST['card_name']; 
     $valid = False; // Checks if login credentials are valid
     $sql = new sql($conn);
 
@@ -28,8 +30,9 @@
         } elseif ($conn->query("SELECT * FROM User WHERE email='" . $email . "'")->num_rows > 0) {
             echo "You have already signed up";
         } else {
-            $query = "INSERT INTO User (email, password, delivery_address) VALUES ('" . $email . "','" . $pwd . "','" . $delivery_address . "');";
-            if (mysqli_multi_query($conn, $query)) {
+            $query1 = "INSERT INTO User (email, password, delivery_address) VALUES ('" . $email . "','" . $pwd . "','" . $delivery_address . "');";
+            $query2 = "INSERT INTO Payment (email, payment_option, card_name, card_number) VALUES ('" . $email . "','" . $payment_option . "','" . $card_name . "'," . $card_number . ")";
+            if (mysqli_multi_query($conn, $query1) and mysqli_multi_query($conn, $query2)) {
                 echo "Successfully signed up";
                 $valid = True;
             } else {
