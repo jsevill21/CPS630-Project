@@ -68,7 +68,9 @@
         echo "<input type='hidden' id='email' name='email' value=" . $email . ">";
         echo "<input type='hidden' id='delivery_address' name='delivery_address' value='" . $delivery_address . "'>";
         echo "<input type='hidden' id='store' name='store' value=" . $store . ">";
-        echo "<input type='hidden' id='payment' name='payment' value=" . $payment . ">";
+        echo "<input type='hidden' id='payment_option' name='payment_option' value=" . $payment_option . ">";
+        echo "<input type='hidden' id='card_name' name='card_name' value=" . $card_name . ">";
+        echo "<input type='hidden' id='card_number' name='card_number' value=" . $card_number . ">";
         echo "<button type='submit'>Confirm Order</button>";
         echo "</form>";
         echo "<div id='map' style='width:50vw; height:50vh; left:25vw'></div>";
