@@ -17,7 +17,6 @@
     $email = $_POST['email'];
     $store = $_POST['store'];
     $delivery_address = $_POST['delivery_address'];
-    $payment = $_POST['payment'];
 
     $find_truck = "SELECT truck_id FROM Truck WHERE store_id=" . $store;
     $truck_id = $sql->find_value($find_truck, 'truck_id');
@@ -27,7 +26,10 @@
     $find_trip = "SELECT trip_id FROM Trip ORDER BY trip_id DESC";
     $trip_id = $sql->find_value($find_trip, 'trip_id');
 
-    $add_to_order = "INSERT INTO Orders (email, trip_id, payment_option) VALUES ('" . $email . "'," . $trip_id . ",'" . $payment . "')";
+    $find_payment = "SELECT payment_id FROM Payment WHERE email=" . $email;
+    $payment_id = sql->find_value($find_payment, 'payment_id');
+
+    $add_to_order = "INSERT INTO Orders (payment_id, trip_id) VALUES (" . $payment_id . "," . $trip_id . ")";
     mysqli_multi_query($conn, $add_to_order);
     $find_order = "SELECT order_id FROM Orders ORDER BY order_id DESC";
     $order_id = $sql->find_value($find_order, 'order_id');
