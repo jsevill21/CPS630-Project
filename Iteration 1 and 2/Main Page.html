@@ -127,6 +127,15 @@
                     <input type="text" id="delivery_address" name="delivery_address"><br>
                     <label for="signUp_pwd">Password:</label><br>
                     <input type="password" id="signUp_pwd" name="signUp_pwd"><br>
+                    <label for="payment_option">Select Payment Option:</label>
+                    <select id="payment_option" name="payment_option">
+                        <option value="credit">Credit</option>
+                        <option value="debit">Debit</option>
+                    </select><br>
+                    <label for="card_number">Card Number:</label><br>
+                    <input type="text" id="card_number" name="card_number"><br>
+                    <label for="card_name">Name on Card:</label><br>
+                    <input type="text" id="card_name" name="card_name"><br>
                 </div>
                 <div id="signIn" class="hidden">
                     <label for="signIn_email">Email:</label><br>
@@ -138,12 +147,6 @@
                 <select id="store" name="store">
                     <option value="1">Square One</option>
                     <option value="2">Yorkdale</option>
-                </select><br>
-                <label for="payment">Select Payment Option:</label>
-                <select id="payment" name="payment">
-                    <option value="credit">Credit</option>
-                    <option value="debit">Debit</option>
-                    <option value="paypal">PayPal</option>
                 </select><br>
                 <button type="submit">Submit Cart</button>
             </form>
