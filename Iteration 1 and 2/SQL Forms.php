@@ -65,6 +65,6 @@
         <tr><td>Trip</td><td>trip_id, truck_id, destination</td></tr>
         <tr><td>Truck</td><td>truck_id, store_id</td></tr>
     </table>
-    <a href="Main Page.html"><button>User Mode</button></a>
+    <a href="Main Page.html">Click here to go to User Mode</a>
 </body>
 </html>
