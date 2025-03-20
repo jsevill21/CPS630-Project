@@ -26,8 +26,8 @@
     $find_trip = "SELECT trip_id FROM Trip ORDER BY trip_id DESC";
     $trip_id = $sql->find_value($find_trip, 'trip_id');
 
-    $find_payment = "SELECT payment_id FROM Payment WHERE email=" . $email;
-    $payment_id = sql->find_value($find_payment, 'payment_id');
+    $find_payment = "SELECT payment_id FROM Payment WHERE email='" . $email . "'";
+    $payment_id = $sql->find_value($find_payment, 'payment_id');
 
     $add_to_order = "INSERT INTO Orders (payment_id, trip_id) VALUES (" . $payment_id . "," . $trip_id . ")";
     mysqli_multi_query($conn, $add_to_order);
@@ -41,6 +41,6 @@
 
     $conn->close();
     ?>
-    Order <?php echo $order_id . " "?>Confirmed
+    Payment for Order <?php echo $order_id . " "?>Confirmed
 </body>
 </html>
