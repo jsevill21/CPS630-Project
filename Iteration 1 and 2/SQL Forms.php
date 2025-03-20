@@ -5,53 +5,41 @@
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL Forms</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 </head>
 
-<body>
+<body ng-app="myApp">
     <h1>Enter Parameters</h1>
     <p>When inserting values or specifying conditions (e.g., WHERE email='joe@gmail.com'), enclose string values with single quotes.</p><br>
-    <form method="POST" action="Admin.php">
-        <label for="table">Select Table: </label>
-        <select id="table" name="table">
-            <option value="Item">Item</option>
-            <option value="User">User</option>
-            <option value="Payment">Payment</option>
-            <option value="Orders">Orders</option>
-            <option value="Reviews">Reviews</option>
-            <option value="Store">Store</option>
-            <option value="Trip">Trip</option>
-            <option value="Truck">Truck</option>
-        </select><br>
-
-        <?php
-        $action = $_POST['actions'];
-        if ($action == 'insert') {
-            echo "<input type='hidden' id='action' name='action' value='insert'>";
-            echo "<label for='columns'>Columns (separate by commas): </label><br>";
-            echo "<input type='text' id='columns' name='columns'><br>";
-            echo "<label for='values'>Values (separate by commas): </label><br>";
-            echo "<input type='text' id='values' name='values'><br>";
-        } elseif ($action == 'delete') {
-            echo "<input type='hidden' id='action' name='action' value='delete'>";
-            echo "<label for='condition'>Condition: </label><br>";
-            echo "<input type='text' id='condition' name='condition'><br>";
-        } elseif ($action == 'update') {
-            echo "<input type='hidden' id='action' name='action' value='update'>";
-            echo "<label for='column'>Column: </label><br>";
-            echo "<input type='text' id='column' name='column'><br>";
-            echo "<label for='newValue'>New Value: </label><br>";
-            echo "<input type='text' id='newValue' name='newValue'><br>";
-            echo "<label for='condition'>Condition: </label><br>";
-            echo "<input type='text' id='condition' name='condition'><br>";
-        } elseif ($action == 'select') {
-            echo "<input type='hidden' id='action' name='action' value='select'>";
-            echo "<label for='columns'>Columns (separate by commas): </label><br>";
-            echo "<input type='text' id='columns' name='columns'><br>";
-            echo "<label for='condition'>Condition: </label><br>";
-            echo "<input type='text' id='condition' name='condition'><br>";
-        }
-        ?>
-        <button type="submit">Submit</button>
+    <p>Click the action you need: </p>
+    <a href="#!insert">Insert</a> |
+    <a href="#!delete">Delete</a> |
+    <a href="#!update">Update</a> |
+    <a href="#!select">Select</a>
+    
+    <div ng-view style="margin-top: 10px;"></div>
+    <script>
+    var app = angular.module("myApp", ["ngRoute"]);
+    app.config(function($routeProvider) {
+        $routeProvider
+        .when("/", {
+            template : "<p></p>"
+        })
+        .when("/insert", {
+            templateUrl : "insert.html"
+        })
+        .when("/delete", {
+            templateUrl : "delete.html"
+        })
+        .when("/update", {
+            templateUrl : "update.html"
+        })
+        .when("/select", {
+            templateUrl : "select.html"
+        });
+    });
+    </script>
     </form>
     <h3>Table Attributes</h3>
     <table>
