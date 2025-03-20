@@ -1,0 +1,14 @@
+<form id="cart" action="Invoice.php" method="POST">
+    <input type="hidden" id="items" name="items">
+    <input type="hidden" id="login" name="login" value="signIn">
+    <label for="signIn_email">Email:</label><br>
+    <input type="text" id="signIn_email" name="signIn_email" required><br>
+    <label for="signIn_pwd">Password:</label><br>
+    <input type="password" id="signIn_pwd" name="signIn_pwd" required><br>
+    <label for="store">Store:</label>
+    <select id="store" name="store">
+        <option value="1">Square One</option>
+        <option value="2">Yorkdale</option>
+    </select><br>
+    <button type="submit">Submit Cart</button>
+</form>

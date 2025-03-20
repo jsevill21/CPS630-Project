@@ -1,0 +1,21 @@
+<form method="POST" action="Admin.php">
+    <label for="table">Select Table: </label>
+    <select id="table" name="table">
+        <option value="Item">Item</option>
+        <option value="User">User</option>
+        <option value="Payment">Payment</option>
+        <option value="Orders">Orders</option>
+        <option value="Reviews">Reviews</option>
+        <option value="Store">Store</option>
+        <option value="Trip">Trip</option>
+        <option value="Truck">Truck</option>
+    </select><br>
+    <input type='hidden' id='action' name='action' value='update'>
+    <label for='column'>Column: </label><br>
+    <input type='text' id='column' name='column'><br>
+    <label for='newValue'>New Value: </label><br>
+    <input type='text' id='newValue' name='newValue'><br>
+    <label for='condition'>Condition: </label><br>
+    <input type='text' id='condition' name='condition'><br>
+    <button type="submit" style="margin-top: 10px">Submit</button>
+</form>

@@ -1,0 +1,19 @@
+<form method="POST" action="Admin.php">
+    <label for="table">Select Table: </label>
+    <select id="table" name="table">
+        <option value="Item">Item</option>
+        <option value="User">User</option>
+        <option value="Payment">Payment</option>
+        <option value="Orders">Orders</option>
+        <option value="Reviews">Reviews</option>
+        <option value="Store">Store</option>
+        <option value="Trip">Trip</option>
+        <option value="Truck">Truck</option>
+    </select><br>
+    <input type='hidden' id='action' name='action' value='insert'>
+    <label for='columns'>Columns (separate by commas): </label><br>
+    <input type='text' id='columns' name='columns'><br>
+    <label for='values'>Values (separate by commas): </label><br>
+    <input type='text' id='values' name='values'><br>
+    <button type="submit" style="margin-top: 10px">Submit</button>
+</form>
