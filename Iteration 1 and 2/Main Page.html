@@ -5,6 +5,8 @@
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OSP Main Page</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <style>
         * {box-sizing: border-box;}
         header {text-align: center;}
@@ -50,17 +52,8 @@
                 <a>Reviews</a> |
                 <a href="#cart">Shopping Cart</a> |
                 <a href="Services.html">Types of Services</a> |
-                <button onclick="document.getElementById('search').style.display='block';">Search</button> |
-                <button onclick="document.getElementById('sqlActions').style.display='inline';">Admin Mode</button>
-                <form id="sqlActions" class="hidden" method="POST" action="SQL Forms.php">
-                    <select name="actions" id="actions" onchange="document.getElementById('sqlActions').submit();">
-                        <option value="insert">Select an Option</option>
-                        <option value="insert">Insert</option>
-                        <option value="delete">Delete</option>
-                        <option value="update">Update</option>
-                        <option value="select">Select</option>
-                    </select>
-                </form>
+                <a href="SQL Forms.php">Admin Mode</a> |
+                <button onclick="document.getElementById('search').style.display='block';">Search</button>
             </nav>
         </div>
     </div>
@@ -115,41 +108,9 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <form id="cart" action="Invoice.php" method="POST">
-                <input type="hidden" id="items" name="items">
-                <input type="hidden" id="login" name="login">
-                <button type="button" onclick="changeLogin('signUp')">Sign Up</button>
-                <button type="button" onclick="changeLogin('signIn')">Sign In</button>
-                <div id="signUp" class="hidden">
-                    <label for="signUp_email">Email:</label><br>
-                    <input type="text" id="signUp_email" name="signUp_email"><br>
-                    <label for="delivery_address">Address:</label><br>
-                    <input type="text" id="delivery_address" name="delivery_address"><br>
-                    <label for="signUp_pwd">Password:</label><br>
-                    <input type="password" id="signUp_pwd" name="signUp_pwd"><br>
-                    <label for="payment_option">Select Payment Option:</label>
-                    <select id="payment_option" name="payment_option">
-                        <option value="credit">Credit</option>
-                        <option value="debit">Debit</option>
-                    </select><br>
-                    <label for="card_number">Card Number:</label><br>
-                    <input type="text" id="card_number" name="card_number"><br>
-                    <label for="card_name">Name on Card:</label><br>
-                    <input type="text" id="card_name" name="card_name"><br>
-                </div>
-                <div id="signIn" class="hidden">
-                    <label for="signIn_email">Email:</label><br>
-                    <input type="text" id="signIn_email" name="signIn_email"><br>
-                    <label for="signIn_pwd">Password:</label><br>
-                    <input type="password" id="signIn_pwd" name="signIn_pwd"><br>
-                </div><br>
-                <label for="store">Select Store:</label>
-                <select id="store" name="store">
-                    <option value="1">Square One</option>
-                    <option value="2">Yorkdale</option>
-                </select><br>
-                <button type="submit">Submit Cart</button>
-            </form>
+            <a href="#!signup">Sign Up</a> |
+            <a href="#!signin">Sign In</a>
+            <div ng-view></div>
         </div>
     </div>
 
@@ -179,18 +140,21 @@
             }
             document.getElementById("items").value = itemID.join();
         }
-
-        function changeLogin(id) {
-            if (id == 'signUp') {
-                document.getElementById('signIn').style.display = "none";
-                document.getElementById("login").value = "signUp";
-            }  
-            else if (id == 'signIn') {
-                document.getElementById('signUp').style.display = "none";
-                document.getElementById("login").value = "signIn";
-            }
-            document.getElementById(id).style.display = "block";
-        }
+    </script>
+    <script>
+        var app = angular.module("myApp", ["ngRoute"]);
+        app.config(function($routeProvider) {
+            $routeProvider
+            .when("/", {
+                template : "<p></p>"
+            })
+            .when("/signin", {
+                templateUrl : "signin.html"
+            })
+            .when("/signup", {
+                templateUrl : "signup.html"
+            });
+        });
     </script>
 </body>
 </html>
