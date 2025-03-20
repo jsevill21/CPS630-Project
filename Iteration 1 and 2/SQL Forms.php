@@ -40,8 +40,8 @@
         });
     });
     </script>
-    </form>
-    <h3>Table Attributes</h3>
+
+    <h3 style="margin-top: 10px;">Table Attributes</h3>
     <table>
         <tr><th>Table</th><th>Attributes</th></tr>
         <tr><td>Item</td><td>item_id, item_name, price</td></tr>
