@@ -25,9 +25,7 @@
     if ($login == 'signUp') {
         $email = $_POST['signUp_email'];
         $pwd = $_POST['signUp_pwd'];
-        if (empty($email) or empty($pwd) or empty($delivery_address)) {
-            echo "Please enter valid email, password, and address";
-        } elseif ($conn->query("SELECT * FROM User WHERE email='" . $email . "'")->num_rows > 0) {
+        if ($conn->query("SELECT * FROM User WHERE email='" . $email . "'")->num_rows > 0) {
             echo "You have already signed up";
         } else {
             $query1 = "INSERT INTO User (email, password, delivery_address) VALUES ('" . $email . "','" . $pwd . "','" . $delivery_address . "');";
@@ -51,9 +49,7 @@
             echo "Incorrect login credentials";
         }
         $delivery_address = $sql->find_value("SELECT delivery_address FROM User WHERE email='" . $email . "'", 'delivery_address');
-    } else {
-        echo "Please sign in or sign up";
-    }
+    } 
 
     if (!empty($_POST['items']) and $valid == True) {
         echo "<table style='margin: auto'><tr><th>Name</th><th>Price</th></tr>";
