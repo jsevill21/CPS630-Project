@@ -12,19 +12,22 @@
 <body style="text-align: center;">
     <h1>Order Summary</h1>
     <?php
-    $delivery_address = $_POST['delivery_address'];
+    $delivery_address;
     $login = $_POST['login'];
     $store = $_POST['store'];
     $items = $_POST['items'];
-    $payment_option = $_POST['payment'];
-    $card_number = $_POST['card_number']; 
-    $card_name = $_POST['card_name']; 
+    $payment_option;
     $valid = False; // Checks if login credentials are valid
     $sql = new sql($conn);
 
     if ($login == 'signUp') {
         $email = $_POST['signUp_email'];
         $pwd = $_POST['signUp_pwd'];
+        $delivery_address = $_POST['delivery_address'];
+        $payment_option = $_POST['payment_option'];
+        $card_number = $_POST['card_number']; 
+        $card_name = $_POST['card_name'];
+        
         if ($conn->query("SELECT * FROM User WHERE email='" . $email . "'")->num_rows > 0) {
             echo "You have already signed up";
         } else {
@@ -49,6 +52,7 @@
             echo "Incorrect login credentials";
         }
         $delivery_address = $sql->find_value("SELECT delivery_address FROM User WHERE email='" . $email . "'", 'delivery_address');
+        $payment_option = $sql->find_value("SELECT payment_option FROM Payment WHERE email='" . $email . "'", 'payment_option');
     } 
 
     if (!empty($_POST['items']) and $valid == True) {
@@ -58,15 +62,12 @@
         echo "</table>";
 
         echo "Store: " . $sql->find_value("SELECT store_name FROM Store WHERE store_id=" . $store, 'store_name') . "<br>";
-        echo "Payment Option: " . $payment;
+        echo "Payment Option: " . $payment_option;
         echo "<form action='Confirm.php' method='POST'>";
         echo "<input type='hidden' id='items' name='items' value=" . $items . ">";
         echo "<input type='hidden' id='email' name='email' value=" . $email . ">";
         echo "<input type='hidden' id='delivery_address' name='delivery_address' value='" . $delivery_address . "'>";
         echo "<input type='hidden' id='store' name='store' value=" . $store . ">";
-        echo "<input type='hidden' id='payment_option' name='payment_option' value=" . $payment_option . ">";
-        echo "<input type='hidden' id='card_name' name='card_name' value=" . $card_name . ">";
-        echo "<input type='hidden' id='card_number' name='card_number' value=" . $card_number . ">";
         echo "<button type='submit'>Confirm Order</button>";
         echo "</form>";
         echo "<div id='map' style='width:50vw; height:50vh; left:25vw'></div>";
