@@ -62,6 +62,7 @@
         echo "</table>";
 
         echo "Store: " . $sql->find_value("SELECT store_name FROM Store WHERE store_id=" . $store, 'store_name') . "<br>";
+        echo "Address: " . $delivery_address . "<br>";
         echo "Payment Option: " . $payment_option;
         echo "<form action='Confirm.php' method='POST'>";
         echo "<input type='hidden' id='items' name='items' value=" . $items . ">";
