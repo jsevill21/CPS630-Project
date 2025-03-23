@@ -18,7 +18,6 @@
     $sql = new sql($conn);
     ?>
 
-    <p><b>Email:</b> <?php echo $sql->find_value($query, "email");?></p>
     <p><b>Order ID:</b> <?php echo $sql->find_value($query, "order_id");?></p>
     <p><b>Order Details:</b></p>
 
