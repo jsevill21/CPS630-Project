@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <header><h1>Reviews</h1></header>
+    <nav>
+        <a href="Main Page.html">Home</a> |
+        <a href="About Us.html">About Us</a> |
+        <a href="Services.html">Types of Services</a>
+    </nav>
+    
+    <div style="text-align: center">
+        <h3>Select Reviews for an Item:</h3>
+        <a href="#!ipad">iPad</a> |
+        <a href="#!huawei">Huawei Laptop MateBook</a> |
+        <a href="#!surface">Microsoft Surface Laptop</a> |
+        <a href="#!samsung">Samsung Tablet</a> |
+        <a href="#!iphone">iPhone</a> |
+        <a href="#!sony">Sony WH-1000XM5 Headphones</a> |
+        <a href="#!sonos">Sonos Era 100 Smart Speaker</a> |
+        <a href="#!pixel">Google Pixel 8a</a>
+        <div ng-view></div>
+    </div>
+
+    <h3>Submit a Review:</h3>
+    <form method="POST" action="insert_reviews.php">
+        <label for="item_id">Select Item:</label><br>
+        <select id="item_id" name="item_id">
+            <option value="1">iPad</option>
+            <option value="2">Huawei Laptop MateBook</option>
+            <option value="3">Microsoft Surface Laptop</option>
+            <option value="4">Samsung Tablet</option>
+            <option value="5">iPhone</option>
+            <option value="6">Sony WH-1000XM5 Headphones</option>
+            <option value="7">Sonos Era 100 Smart Speaker</option>
+            <option value="8">Google Pixel 8a</option>
+        </select><br>
+        <label for="review">Review:</label><br>
+        <input type="text" id="review" name="review"><br>
+        <label for="rn">Ranking Number:</label><br>
+        <select id="rn" name="rn">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select><br>
+        <button type="submit">Submit Review</button>
+    </form>
+
+    <script>
+        var app = angular.module("myApp", ["ngRoute"]);
+        app.config(function($routeProvider) {
+            $routeProvider
+            .when("/", {
+                template : "<p></p>"
+            })
+            .when("/ipad", {
+                templateUrl : "../Iteration 3 and 4/ipad.php"
+            })
+            .when("/huawei", {
+                templateUrl : "../Iteration 3 and 4/huawei.php"
+            })
+            .when("/surface", {
+                templateUrl : "../Iteration 3 and 4/surface.php"
+            })
+            .when("/samsung", {
+                templateUrl : "../Iteration 3 and 4/samsung.php"
+            })
+            .when("/iphone", {
+                templateUrl : "../Iteration 3 and 4/iphone.php"
+            })
+            .when("/sony", {
+                templateUrl : "../Iteration 3 and 4/sony.php"
+            })
+            .when("/sonos", {
+                templateUrl : "../Iteration 3 and 4/sonos.php"
+            })
+            .when("/pixel", {
+                templateUrl : "../Iteration 3 and 4/pixel.php"
+            });
+        });
+    </script>
+</body>
+</html>
