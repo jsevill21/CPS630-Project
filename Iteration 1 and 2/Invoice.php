@@ -16,6 +16,7 @@
     $login = $_POST['login'];
     $store = $_POST['store'];
     $items = $_POST['items'];
+    $express_delivery = $_POST['express_delivery'];
     $payment_option;
     $valid = False; // Checks if login credentials are valid
     $sql = new sql($conn);
@@ -60,7 +61,11 @@
         echo "</table>";
         
         $total_price = $sql->find_value("SELECT SUM(price) AS total_price FROM Item WHERE item_id in (" . $items . ")", "total_price");
-        echo "Subtotal: " . $total_price . "<br>";
+        if ($express_delivery == 1) {
+            echo "Total: " . $total_price . "<br>";
+        } else {
+            echo "Total (+ express shipping): " . $total_price + 20 . "<br>";
+        }
         echo "Store: " . $sql->find_value("SELECT store_name FROM Store WHERE store_id=" . $store, 'store_name') . "<br>";
         echo "Address: " . $delivery_address . "<br>";
         echo "Payment Option: " . $payment_option;
