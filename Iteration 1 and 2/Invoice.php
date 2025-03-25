@@ -43,8 +43,7 @@
     } elseif ($login == 'signIn') {
         $email = $_POST['signIn_email'];
         $pwd = $_POST['signIn_pwd'];
-        $query = "SELECT * FROM User WHERE email='" . $email . "' and password='" . $pwd . "'";
-        $result = $conn->query($query);
+        $result = $conn->query(SELECT * FROM User WHERE email='" . $email . "' and password='" . $pwd . "'");
         if ($result->num_rows > 0) {
             echo "Successfully signed in";
             $valid = True;
@@ -57,13 +56,15 @@
 
     if (!empty($_POST['items']) and $valid == True) {
         echo "<table style='margin: auto'><tr><th>Name</th><th>Price</th></tr>";
-        $query = "SELECT * FROM Item WHERE item_id in (" . $items . ")";
-        $sql->print_table($query, ['item_name', 'price']); 
+        $sql->print_table("SELECT * FROM Item WHERE item_id in (" . $items . ")", ['item_name', 'price']); 
         echo "</table>";
-
+        
+        $total_price = $sql->find_value("SELECT SUM(price) AS total_price FROM Item WHERE item_id in (" . $items . ")", "total_price");
+        echo "Subtotal: " . $total_price . "<br>";
         echo "Store: " . $sql->find_value("SELECT store_name FROM Store WHERE store_id=" . $store, 'store_name') . "<br>";
         echo "Address: " . $delivery_address . "<br>";
         echo "Payment Option: " . $payment_option;
+        
         echo "<form action='Confirm.php' method='POST'>";
         echo "<input type='hidden' id='items' name='items' value=" . $items . ">";
         echo "<input type='hidden' id='email' name='email' value=" . $email . ">";
@@ -71,6 +72,7 @@
         echo "<input type='hidden' id='store' name='store' value=" . $store . ">";
         echo "<button type='submit'>Confirm Order</button>";
         echo "</form>";
+        
         echo "<div id='map' style='width:50vw; height:50vh; left:25vw'></div>";
     }
     ?>
