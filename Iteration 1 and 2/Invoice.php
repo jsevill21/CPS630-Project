@@ -1,6 +1,10 @@
 <?php include ('connect.php'); ?>
 <?php include ('PHP Class.php'); ?>
-
+<?php
+function generateRandomSalt() {
+    return bin2hex(random_bytes(6));
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +28,8 @@
     if ($login == 'signUp') {
         $email = $_POST['signUp_email'];
         $pwd = $_POST['signUp_pwd'];
+        $salt = generateRandomSalt();
+        $hashedpwd = md5($pwd . $salt);
         $delivery_address = $_POST['delivery_address'];
         $payment_option = $_POST['payment_option'];
         $card_number = $_POST['card_number']; 
@@ -32,7 +38,7 @@
         if ($conn->query("SELECT * FROM User WHERE email='" . $email . "'")->num_rows > 0) {
             echo "You have already signed up";
         } else {
-            $query1 = "INSERT INTO User (email, password, delivery_address) VALUES ('" . $email . "','" . $pwd . "','" . $delivery_address . "');";
+            $query1 = "INSERT INTO User (email, salt, password, delivery_address) VALUES ('" . $email . "','" . $salt . "','" . $hashedpwd . "','" . $delivery_address . "');";
             $query2 = "INSERT INTO Payment (email, payment_option, card_name, card_number) VALUES ('" . $email . "','" . $payment_option . "','" . $card_name . "'," . $card_number . ")";
             if (mysqli_multi_query($conn, $query1) and mysqli_multi_query($conn, $query2)) {
                 echo "Successfully signed up";
@@ -44,10 +50,24 @@
     } elseif ($login == 'signIn') {
         $email = $_POST['signIn_email'];
         $pwd = $_POST['signIn_pwd'];
-        $result = $conn->query(SELECT * FROM User WHERE email='" . $email . "' and password='" . $pwd . "'");
-        if ($result->num_rows > 0) {
-            echo "Successfully signed in";
-            $valid = True;
+        // First, fetch salt and password from the database for the given email
+        $stmt = $conn->prepare("SELECT password, salt FROM User WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->bind_result($storedPassword, $salt);
+        $stmt->fetch();
+        $stmt->close();
+
+        if ($storedPassword && $salt) { 
+            // Hash the input password with the retrieved salt
+            $hashedInput = md5($pwd . $salt);
+
+            if ($hashedInput === $storedPassword) {
+                echo "Successfully signed in";
+                $valid = True;
+            } else {
+                echo "Incorrect login credentials";
+            }
         } else {
             echo "Incorrect login credentials";
         }
