@@ -20,7 +20,7 @@ function generateRandomSalt() {
     $login = $_POST['login'];
     $store = $_POST['store'];
     $items = $_POST['items'];
-    $express_delivery = $_POST['express_delivery'];
+    $express_shipping = $_POST['express_shipping'];
     $payment_option;
     $valid = False; // Checks if login credentials are valid
     $sql = new sql($conn);
@@ -81,7 +81,7 @@ function generateRandomSalt() {
         echo "</table>";
         
         $total_price = $sql->find_value("SELECT SUM(price) AS total_price FROM Item WHERE item_id in (" . $items . ")", "total_price");
-        if ($express_delivery == 1) {
+        if ($express_shipping == 0) {
             echo "Total: " . $total_price . "<br>";
         } else {
             echo "Total (+ express shipping): " . $total_price + 20 . "<br>";
