@@ -20,6 +20,10 @@ Services
 --------
 Summarizes what services are provided by the OSP. The link to it is found on the main page.
 
+Reviews
+-------
+Shows reviews for each item available in the shop. It also lets a user submit a review for an item.
+
 DB Maintain, SQL Forms, Admin
 -----------------------------------
 This option found in the main page allows a database admin to do SQL actions. When they select an action (insert, delete, update, select) they are directed to SQL Forms.php that shows different forms based on the selected action. When the appropriate form is completed, the admin is directed to Admin.php that shows or confirms the results.
