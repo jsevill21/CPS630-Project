@@ -89,6 +89,15 @@ function generateRandomSalt() {
         echo "Store: " . $sql->find_value("SELECT store_name FROM Store WHERE store_id=" . $store, 'store_name') . "<br>";
         echo "Address: " . $delivery_address . "<br>";
         echo "Payment Option: " . $payment_option;
+        $card_name = $sql->find_value("SELECT card_name FROM Payment WHERE email='" . $email . "'", 'card_name');
+        $card_number = $sql->find_value("SELECT card_number FROM Payment WHERE email='" . $email . "'", 'card_number');
+
+        // Mask all but last 4 digits of card number for privacy
+        $masked_card_number = str_repeat("*", strlen($card_number) - 4) . substr($card_number, -4);
+
+        echo "<br>Card Name: " . htmlspecialchars($card_name);
+        echo "<br>Card Number: " . htmlspecialchars($masked_card_number);
+
         
         echo "<form action='Confirm.php' method='POST'>";
         echo "<input type='hidden' id='items' name='items' value=" . $items . ">";
