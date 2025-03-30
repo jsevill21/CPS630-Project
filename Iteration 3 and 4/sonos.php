@@ -1,6 +1,7 @@
 <?php include ('../Iteration 1 and 2/connect.php'); ?>
 <?php include ('../Iteration 1 and 2/PHP Class.php'); ?>
 
+<h3>Sonos Era 100 Smart Speaker</h3>
 <?php
 $sql = new sql($conn);
 $query = "SELECT * FROM Reviews WHERE item_id=7";
