@@ -1,6 +1,6 @@
 How to Run
 ---------
-To run the project, it is important to note that Xampp should be downloaded beforehand to your device to use MySQL and Apache. The downloaded document should be placed under xampp/htdocs. Before running the main page the php admin should have a related database in it as well so first create a new database called "osp" your http://localhost/phpmyadmin. Then create and populate tables by running the PHP files in the root directory of the project. Now you can run the project as a whole by typing http://localhost/CPS630-Project/Iteration%201%20and%202/Main%20Page.html onto your browser address bar.
+To run the project, it is important to note that Xampp should be downloaded beforehand to your device to use MySQL and Apache. The downloaded document should be placed under xampp/htdocs. Before running the main page the php admin should have a related database in it as well so first create a new database called "osp" your http://localhost/phpmyadmin. Then create and populate tables by running the PHP files in the root directory of the project. Now you can run the project as a whole by typing http://localhost/CPS630-Project-main/Iteration%201%20and%202/Main%20Page.html#!/ onto your browser address bar.
 
 Main Page
 ---------
