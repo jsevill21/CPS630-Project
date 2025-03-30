@@ -1,6 +1,7 @@
 <?php include ('../Iteration 1 and 2/connect.php'); ?>
 <?php include ('../Iteration 1 and 2/PHP Class.php'); ?>
 
+<h3>Huawei Laptop MateBook</h3>
 <?php
 $sql = new sql($conn);
 $query = "SELECT * FROM Reviews WHERE item_id=2";
