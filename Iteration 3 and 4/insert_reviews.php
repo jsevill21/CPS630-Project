@@ -6,7 +6,7 @@
 <head>
     <title>Review Submitted</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../Iteration 1 and 2/css/style.css">
 </head>
 <body style="text-align: center;">
 <?php
