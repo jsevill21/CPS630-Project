@@ -1,5 +1,5 @@
-<?php include ('connect.php'); ?>
-<?php include ('PHP Class.php'); ?>
+<?php include ('../Iteration 1 and 2/connect.php'); ?>
+<?php include ('../Iteration 1 and 2/PHP Class.php'); ?>
 
 <?php
 $sql = new sql($conn);
