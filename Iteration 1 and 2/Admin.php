@@ -1,5 +1,10 @@
 <?php include ('connect.php'); ?>
 <?php include ('PHP Class.php'); ?>
+<?php
+function generateRandomSalt() {
+    return bin2hex(random_bytes(6));
+}
+?>
 
 <!DOCTYPE html>
 <html lang="eng">
@@ -23,8 +28,44 @@
             $sql->print_at_once("SELECT " . $_POST['columns'] . " FROM " . $table . " " . $_POST['condition']);
         }
     } elseif ($action == 'insert') {
-        $query = "INSERT INTO " . $table . " (" . $_POST['columns']  . ") VALUES (" . $_POST['values'] . ")";
-        $sql->IDU($query, "Record created sucessfully", "Error creating record");
+        if ($table == 'User') { // Only modify if inserting into User table
+            $columns = explode(", ", $_POST['columns']);
+            $values = explode(", ", $_POST['values']);
+        
+            // Ensure email and password are present
+            $emailIndex = array_search('email', $columns);
+            $passwordIndex = array_search('password', $columns);
+        
+            if ($emailIndex !== false && $passwordIndex !== false) {
+                $email = trim($values[$emailIndex], "'");
+                $password = trim($values[$passwordIndex], "'");
+        
+                // Generate salt and hash password
+                $salt = generateRandomSalt();
+                $hashedPassword = md5($password . $salt);
+        
+                // Replace plaintext password with hashed one
+                $values[$passwordIndex] = "'" . $hashedPassword . "'";
+        
+                // **Only add salt if it's not already in columns**
+                if (!in_array('salt', $columns)) {
+                    $columns[] = 'salt';
+                    $values[] = "'" . $salt . "'";
+                }
+        
+                // Final SQL query
+                $query = "INSERT INTO User (" . implode(", ", $columns) . ") VALUES (" . implode(", ", $values) . ")";
+                echo "Query: " . $query; // Debugging line to check query output
+                $sql->IDU($query, "User created successfully with secure password", "Error creating user");
+            } else {
+                echo "Error: Missing email or password field.";
+            }
+        } else {
+            // Default insert for other tables
+            $query = "INSERT INTO " . $table . " (" . $_POST['columns'] . ") VALUES (" . $_POST['values'] . ")";
+            echo "Query: " . $query; // Debugging line
+            $sql->IDU($query, "Record created successfully", "Error creating record");
+        }
     } elseif ($action == 'delete') {
         $query = "DELETE FROM " . $table . " " . $_POST['condition'];
         $sql->IDU($query, "Record(s) deleted successfully", "Error deleting record(s)");
