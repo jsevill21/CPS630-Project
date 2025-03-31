@@ -55,8 +55,7 @@ function generateRandomSalt() {
         
                 // Final SQL query
                 $query = "INSERT INTO User (" . implode(", ", $columns) . ") VALUES (" . implode(", ", $values) . ")";
-                echo "Query: " . $query; // Debugging line to check query output
-                $sql->IDU($query, "User created successfully with secure password", "Error creating user");
+                $sql->IDU($query, "Record created successfully", "Error creating record");
             } else {
                 echo "Error: Missing email or password field.";
             }
