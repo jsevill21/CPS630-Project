@@ -33,14 +33,14 @@ function generateRandomSalt() {
         $delivery_address = $_POST['delivery_address'];
         $payment_option = $_POST['payment_option'];
         $card_number = $_POST['card_number'];
-        $hashedcardno = md5($card_number . $salt); 
+        $hashed_card_number = md5($card_number . $salt); 
         $card_name = $_POST['card_name'];
         
         if ($conn->query("SELECT * FROM User WHERE email='" . $email . "'")->num_rows > 0) {
             echo "You have already signed up";
         } else {
             $query1 = "INSERT INTO User (email, salt, password, delivery_address) VALUES ('" . $email . "','" . $salt . "','" . $hashedpwd . "','" . $delivery_address . "');";
-            $query2 = "INSERT INTO Payment (email, payment_option, card_name, card_number, salt) VALUES ('" . $email . "','" . $payment_option . "','" . $card_name . "','" . $hashedcardno . "','" . $salt . "')";
+            $query2 = "INSERT INTO Payment (email, payment_option, card_name, card_number, hashed_card_number, salt) VALUES ('" . $email . "','" . $payment_option . "','" . $card_name . "','" . $card_number . "','" . $hashed_card_number . "','" . $salt . "')";
             if (mysqli_multi_query($conn, $query1) and mysqli_multi_query($conn, $query2)) {
                 echo "Successfully signed up";
                 $valid = True;
