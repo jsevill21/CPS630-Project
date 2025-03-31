@@ -55,14 +55,13 @@ function generateRandomSalt() {
         
                 // Final SQL query
                 $query = "INSERT INTO User (" . implode(", ", $columns) . ") VALUES (" . implode(", ", $values) . ")";
-                $sql->IDU($query, "Record created successfully", "Error creating record");
+                $sql->IDU($query, "Record created successfully", "Error creating user");
             } else {
                 echo "Error: Missing email or password field.";
             }
         } else {
             // Default insert for other tables
             $query = "INSERT INTO " . $table . " (" . $_POST['columns'] . ") VALUES (" . $_POST['values'] . ")";
-            echo "Query: " . $query; // Debugging line
             $sql->IDU($query, "Record created successfully", "Error creating record");
         }
     } elseif ($action == 'delete') {
