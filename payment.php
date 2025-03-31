@@ -18,7 +18,8 @@ payment_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 email VARCHAR(50) NOT NULL,
 payment_option VARCHAR(50) NOT NULL,
 card_name VARCHAR(50),
-card_number INT(6),
+card_number VARCHAR(50),
+salt VARCHAR(80) NOT NULL,
 FOREIGN KEY (email) REFERENCES User(email)
 );";
 
