@@ -28,39 +28,58 @@ function generateRandomSalt() {
             $sql->print_at_once("SELECT " . $_POST['columns'] . " FROM " . $table . " " . $_POST['condition']);
         }
     } elseif ($action == 'insert') {
-        if ($table == 'User') { // Only modify if inserting into User table
+        if ($table == 'User') {
             $columns = explode(", ", $_POST['columns']);
-            $values = explode(", ", $_POST['values']);
-        
-            // Ensure email and password are present
+            $values = explode(", ", $_POST['values']);        
+            
             $emailIndex = array_search('email', $columns);
             $passwordIndex = array_search('password', $columns);
         
             if ($emailIndex !== false && $passwordIndex !== false) {
                 $email = trim($values[$emailIndex], "'");
-                $password = trim($values[$passwordIndex], "'");
-        
-                // Generate salt and hash password
+                $password = trim($values[$passwordIndex], "'");        
+                
                 $salt = generateRandomSalt();
-                $hashedPassword = md5($password . $salt);
-        
-                // Replace plaintext password with hashed one
-                $values[$passwordIndex] = "'" . $hashedPassword . "'";
-        
-                // **Only add salt if it's not already in columns**
+                $hashedPassword = md5($password . $salt);        
+                
+                $values[$passwordIndex] = "'" . $hashedPassword . "'";        
+                
                 if (!in_array('salt', $columns)) {
                     $columns[] = 'salt';
                     $values[] = "'" . $salt . "'";
-                }
-        
-                // Final SQL query
+                }        
+                
                 $query = "INSERT INTO User (" . implode(", ", $columns) . ") VALUES (" . implode(", ", $values) . ")";
                 $sql->IDU($query, "Record created successfully", "Error creating user");
             } else {
                 echo "Error: Missing email or password field.";
             }
+        } elseif ($table == 'Payment') { 
+            $columns = explode(", ", $_POST['columns']);
+            $values = explode(", ", $_POST['values']);        
+            
+            $cardNumberIndex = array_search('card_number', $columns);
+        
+            if ($cardNumberIndex !== false) {
+                $cardNumber = trim($values[$cardNumberIndex], "'");        
+                
+                $salt = generateRandomSalt();
+                $hashedCardNumber = md5($cardNumber . $salt);        
+                
+                $columns[] = 'hashed_card_number';
+                $values[] = "'" . $hashedCardNumber . "'";
+        
+                if (!in_array('salt', $columns)) {
+                    $columns[] = 'salt';
+                    $values[] = "'" . $salt . "'";
+                }
+        
+                $query = "INSERT INTO Payment (" . implode(", ", $columns) . ") VALUES (" . implode(", ", $values) . ")";                
+                $sql->IDU($query, "Record created successfully", "Error creating record");
+            } else {
+                echo "Error: Missing card_number field.";
+            }
         } else {
-            // Default insert for other tables
             $query = "INSERT INTO " . $table . " (" . $_POST['columns'] . ") VALUES (" . $_POST['values'] . ")";
             $sql->IDU($query, "Record created successfully", "Error creating record");
         }
